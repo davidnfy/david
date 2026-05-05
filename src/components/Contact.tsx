@@ -49,8 +49,8 @@ export default function Contact() {
           </div>
  
           <div className="pt-24 text-[10px] space-y-2 opacity-20 font-black tracking-[0.2em] uppercase">
-            <p>© 2024 DNFY — DESIGNED BY DAVID</p>
-            <p>BASED IN JAKARTA, ID</p>
+            <p>© 2026 DAVIDNFY — DESIGNED BY DAVID</p>
+            <p>BASED IN MALANG, INDOENSIA</p>
           </div>
         </div>
       </div>
