@@ -18,7 +18,7 @@
     @apply font-sans antialiased text-black min-h-screen bg-white;
   }
 
-  /* Custom Scrollbar */
+ 
   ::-webkit-scrollbar {
     width: 6px;
   }

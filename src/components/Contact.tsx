@@ -3,10 +3,10 @@ import { Mail, Github, Linkedin, Instagram, Disc as Discord, ArrowUpRight } from
 
 export default function Contact() {
   const socials = [
-    { label: 'GitHub', href: '#' },
-    { label: 'LinkedIn', href: '#' },
-    { label: 'Instagram', href: '#' },
-    { label: 'Dribbble', href: '#' },
+    { label: 'GitHub', href: 'https://github.com/davidnfy' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/davidnafisy/' },
+    { label: 'Instagram', href: 'https://www.instagram.com/davidnfy/' },
+    { label: 'Discord', href: 'https://discord.com/users/1272875106187608128' },
   ];
 
   return (

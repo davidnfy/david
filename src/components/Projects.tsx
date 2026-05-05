@@ -43,11 +43,11 @@ export default function Projects() {
     <section id="projects" className="relative py-24 sm:py-[20vh] lg:py-[25vh] px-8 md:px-24 bg-black text-white overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-12">
-          <div className="space-y-4">
+          <div className="space-y-4 text-left w-full">
             <h2 className="text-sm font-black uppercase tracking-[0.4em] opacity-40">Selected Works</h2>
-            <h3 className="text-5xl md:text-7xl font-extrabold tracking-tighter italic">My Projects.</h3>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tighter italic">My Projects.</h3>
           </div>
-          <p className="max-w-xs text-sm opacity-50 text-right">
+          <p className="max-w-xs text-sm opacity-50 text-right md:text-right text-left w-full md:w-auto">
             "Exploring the boundaries of digital interaction with a creative and purposeful approach."
           </p>
         </div>
