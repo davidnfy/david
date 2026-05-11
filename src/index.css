@@ -4,8 +4,8 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   
-  --color-primary: #000000;
-  --color-accent: #ff00ea;
+  --color-primary: #f5f5ff;
+  --color-accent: #f5f5f5;
   --color-bg-light: #ffffff;
 }
 
@@ -16,6 +16,7 @@
   
   body {
     @apply font-sans antialiased text-black min-h-screen bg-white;
+    background-color: var(--color-bg-light);
   }
 
  

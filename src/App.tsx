@@ -15,7 +15,7 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen selection:bg-empathetic selection:text-white relative bg-white text-black">
+    <div className="min-h-screen selection:bg-empathetic selection:text-white relative text-black" style={{backgroundColor: '#f5f5ff'}}>
       <div className="soft-mesh opacity-30" />
 
       
