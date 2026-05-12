@@ -25,7 +25,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-4"
         >
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[11rem] font-extrabold leading-[1.1] md:leading-[0.9] lg:leading-[1.1] tracking-tighter">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[11rem] font-extrabold leading-[1.1] md:leading-[0.9] lg:leading-[1.0] tracking-tighter">
             Crafting <br />
             <span className="text-empathetic">empathetic</span> <br />
             digital <br />
