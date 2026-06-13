@@ -16,12 +16,6 @@ export default function Projects() {
       githubUrl: "https://github.com/davidnfy/animals-organizer-data"
     },
     {
-      title: "Event Management System",
-      category: "Management System",
-      image: "/img/event.png",
-      githubUrl: "https://github.com/davidnfy/event-organizer"
-    },
-    {
       title: "Game Flappy Bird",
       category: "Game",
       image: "/img/flappy-bird.png",
@@ -32,7 +26,13 @@ export default function Projects() {
       category: "Productivity App",
       image: "/img/todolist.png",
       githubUrl: "https://github.com/davidnfy/Todo-List-App"
-    }
+    },
+    {
+      title: "Student Report Management System",
+      category: "Management System",
+      image: "/img/rapot.png",
+      githubUrl: "https://github.com/davidnfy/aplikasi-rapor-siswa"
+    },
   ]
 
   const handleClick = (url, e) => {
@@ -98,15 +98,6 @@ export default function Projects() {
                     </h4>
                   </div>
                   <div className="flex gap-3"></div>
-                </div>
-                <div
-                  className="w-12 h-12 md:w-16 md:h-16 border border-white/20 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all cursor-pointer"
-                  onClick={e => handleClick(project.githubUrl, e)}
-                >
-                  <ArrowRight
-                    size={24}
-                    className="-rotate-45 group-hover:rotate-0 transition-transform"
-                  />
                 </div>
               </div>
             </motion.div>
