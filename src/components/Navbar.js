@@ -1,30 +1,30 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "motion/react"
 
 export default function Navbar() {
-  const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [visible, setVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      const currentScrollY = window.scrollY
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setVisible(false);
+        setVisible(false)
       } else {
-        setVisible(true);
+        setVisible(true)
       }
-      setLastScrollY(currentScrollY);
-    };
+      setLastScrollY(currentScrollY)
+    }
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [lastScrollY])
 
   const navItems = [
-    { name: 'WORKS', href: '#projects' },
-    { name: 'JOURNEY', href: '#education' },
-    { name: 'CONNECT', href: '#contact' },
-  ];
+    { name: "WORKS", href: "#projects" },
+    { name: "JOURNEY", href: "#education" },
+    { name: "CONNECT", href: "#contact" }
+  ]
 
   return (
     <AnimatePresence>
@@ -37,15 +37,15 @@ export default function Navbar() {
           className="fixed top-0 left-0 right-0 z-50 px-8 py-8"
         >
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <motion.div 
+            <motion.div
               className="text-2xl font-black tracking-tighter cursor-pointer"
               whileHover={{ scale: 1.02 }}
             >
               dnfy.
             </motion.div>
-            
+
             <ul className="flex gap-12">
-              {navItems.map((item) => (
+              {navItems.map(item => (
                 <li key={item.name}>
                   <a
                     href={item.href}
@@ -60,5 +60,5 @@ export default function Navbar() {
         </motion.nav>
       )}
     </AnimatePresence>
-  );
+  )
 }

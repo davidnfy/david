@@ -1,0 +1,34 @@
+/* App.css */
+.app-container {
+  background-color: #f5f5ff;
+  min-height: 100vh;
+  position: relative;
+  color: black;
+}
+
+.app-container ::selection {
+  background-color: #e74c3c; /* Warna empathetic - sesuaikan dengan warna Anda */
+  color: white;
+}
+
+.soft-mesh {
+  opacity: 0.3;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.25rem;
+  background-color: #e74c3c; /* Warna empathetic */
+  z-index: 100;
+  transform-origin: left;
+}
+
+.main-content {
+  max-width: 100rem; /* 400px? Mungkin maksudnya 100%? Sesuaikan */
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: hidden;
+}

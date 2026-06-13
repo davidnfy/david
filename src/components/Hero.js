@@ -1,10 +1,11 @@
-import { motion } from 'motion/react';
-import { MapPin, Sparkles, Terminal, Palette, Zap } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { motion } from "motion/react"
 
 export default function Hero() {
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center px-8 md:px-24 py-20 relative overflow-hidden">
+    <section
+      id="home"
+      className="min-h-screen flex flex-col justify-center px-8 md:px-24 py-20 relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto w-full space-y-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,7 +26,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-4"
         >
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[11rem] font-extrabold leading-[1.1] md:leading-[0.9] lg:leading-[1.0] tracking-tighter">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[11rem] font-extrabold leading-[1.1] md:leading-[0.9] lg:leading-[1.0 ] tracking-tighter">
             Crafting <br />
             <span className="text-empathetic">empathetic</span> <br />
             digital <br />
@@ -40,33 +41,36 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.6 }}
             className="max-w-md text-lg md:text-xl font-medium leading-relaxed opacity-60"
           >
-            I'm David — Technology is not just about being advanced, but about how it feels to the user.
+            I'm David — Technology is not just about being advanced, but about
+            how it feels to the user.
           </motion.p>
 
           <motion.div
             drag
             dragConstraints={{ left: -150, right: 150, top: -150, bottom: 150 }}
             dragElastic={0.1}
-            whileDrag={{ scale: 1.1, rotate: 5, cursor: 'grabbing' }}
+            whileDrag={{ scale: 1.1, rotate: 5, cursor: "grabbing" }}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8, type: 'spring' }}
-            whileHover={{ scale: 1.05, cursor: 'grab' }}
+            transition={{ duration: 0.8, delay: 0.8, type: "spring" }}
+            whileHover={{ scale: 1.05, cursor: "grab" }}
             className="w-40 h-40 md:w-56 md:h-56 aspect-square relative group shrink-0 self-center md:self-auto z-20"
           >
-            <img 
-              src="img/david.png" 
+            <img
+              src="img/david.png"
               alt="Work"
               className="w-full h-full object-cover rounded-full shadow-2xl border border-black/5 pointer-events-none select-none"
             />
             {/* Playful hint */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: [0, 1, 0] }}
               transition={{ delay: 2, duration: 3, repeat: Infinity }}
               className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black/5 backdrop-blur-sm px-3 py-1 rounded-full border border-black/5 pointer-events-none"
             >
-              <span className="text-[9px] font-black uppercase tracking-widest opacity-40">Drag me</span>
+              <span className="text-[9px] font-black uppercase tracking-widest opacity-40">
+                Drag me
+              </span>
             </motion.div>
           </motion.div>
         </div>
@@ -75,5 +79,5 @@ export default function Hero() {
       {/* Background Decorative Element */}
       <div className="absolute top-[20%] right-[-5%] w-[40%] h-[60%] bg-linear-to-br from-indigo-500/10 via-transparent to-purple-500/10 blur-[150px] -z-10 opacity-30" />
     </section>
-  );
+  )
 }
