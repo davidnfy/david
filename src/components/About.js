@@ -1,40 +1,40 @@
-import { motion } from "motion/react"
-import { useState, useEffect } from "react"
+import { motion } from "motion/react";
+import { useState, useEffect } from "react";
 
 const Typewriter = () => {
-  const words = ["Full Stack Developer", "Game Developer", "Tech Enthusiast"]
-  const [index, setIndex] = useState(0)
-  const [displayText, setDisplayText] = useState("")
-  const [isDeleting, setIsDeleting] = useState(false)
-  const [speed, setSpeed] = useState(150)
+  const words = ["Full Stack Developer", "Game Developer", "Tech Enthusiast"];
+  const [index, setIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [speed, setSpeed] = useState(150);
 
   useEffect(() => {
-    let timer
+    let timer;
 
     const handleTyping = () => {
-      const currentWord = words[index]
+      const currentWord = words[index];
 
       if (isDeleting) {
-        setDisplayText(currentWord.substring(0, displayText.length - 1))
-        setSpeed(50)
+        setDisplayText(currentWord.substring(0, displayText.length - 1));
+        setSpeed(50);
       } else {
-        setDisplayText(currentWord.substring(0, displayText.length + 1))
-        setSpeed(150)
+        setDisplayText(currentWord.substring(0, displayText.length + 1));
+        setSpeed(150);
       }
 
       if (!isDeleting && displayText === currentWord) {
-        timer = setTimeout(() => setIsDeleting(true), 1500)
+        timer = setTimeout(() => setIsDeleting(true), 1500);
       } else if (isDeleting && displayText === "") {
-        setIsDeleting(false)
-        setIndex(prev => (prev + 1) % words.length)
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % words.length);
       } else {
-        timer = setTimeout(handleTyping, speed)
+        timer = setTimeout(handleTyping, speed);
       }
-    }
+    };
 
-    timer = setTimeout(handleTyping, speed)
-    return () => clearTimeout(timer)
-  }, [displayText, isDeleting, index, speed])
+    timer = setTimeout(handleTyping, speed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, index, speed, words]);
 
   return (
     <span className="text-empathetic min-h-[1.2em] inline-block">
@@ -45,8 +45,8 @@ const Typewriter = () => {
         className="inline-block w-0.75 h-[0.9em] bg-empathetic ml-1 relative top-[0.1em]"
       />
     </span>
-  )
-}
+  );
+};
 
 export default function About() {
   return (
@@ -78,22 +78,14 @@ export default function About() {
           className="space-y-12"
         >
           <div className="space-y-8">
-            <p className="text-xl md:text-2xl font-medium leading-relaxed opacity-60">
-              Hi! I am a vocational high school student who is very interested
-              in technology and the gaming world. My dream is to become a
-              full-stack developer and a game developer. I enjoy learning how
-              things work behind the scenes, and because of that, I continue to
-              study and hone my skills.
-            </p>
-            <p className="text-xl md:text-2xl font-medium leading-relaxed opacity-60">
-              Besides coding, I also enjoy playing games like Valorant, GTA V,
-              Minecraft, and PUBG Mobile. I’m also passionate about music — I
-              love playing instruments like the piano and guitar in my free
-              time.
+            <p className="text-xl md:text-2xl font-medium leading-relaxed opacity-60"> 
+              A vocational high school student with a strong drive toward full-stack development and game engineering. 
+              I have a natural curiosity for how digital products are built—from databases and APIs to frontend interfaces and gameplay mechanics.
+              Every project I take on is an opportunity to sharpen my skills and move closer to my dream career.
             </p>
           </div>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
