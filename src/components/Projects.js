@@ -1,44 +1,101 @@
+import { useEffect } from "react"
 import { motion } from "motion/react"
 import { ArrowRight } from "lucide-react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Projects() {
   const projects = [
     {
-      title: "Church Management Dashboard",
-      category: "Management System",
+      title: "Church Management System",
+      category: "Church Management System",
       image: "/img/absen-gereja.png",
       githubUrl: "https://github.com/davidnfy/absen-gereja"
     },
     {
-      title: "Animal Organizer Data",
-      category: "Management System",
-      image: "/img/animals.png",
+      title: "Pawtify",
+      category: "Pet Management Application",
+      image: "/img/pawtify.png",
       githubUrl: "https://github.com/davidnfy/animals-organizer-data"
     },
     {
-      title: "Game Flappy Bird",
-      category: "Game",
-      image: "/img/flappy-bird.png",
-      githubUrl: "https://github.com/davidnfy/Flappy-Bird"
+      title: "Dompetku",
+      category: "Personal Finance Management Application",
+      image: "/img/dompetku.png",
+      githubUrl: "https://github.com/davidnfy/DompetKu"
     },
     {
-      title: "Todo List App",
+      title: "Todo List",
       category: "Productivity App",
-      image: "/img/todolist.png",
-      githubUrl: "https://github.com/davidnfy/Todo-List-App"
+      image: "/img/todo-list.png",
+      githubUrl: "https://github.com/davidnfy/todo-list-app"
     },
     {
-      title: "Student Report Management System",
-      category: "Management System",
-      image: "/img/rapot.png",
-      githubUrl: "https://github.com/davidnfy/aplikasi-rapor-siswa"
+      title: "Website Profile",
+      category: "Personal website profile",
+      image: "/img/profile-web.png",
+      githubUrl: "https://github.com/davidnfy/davidnafisy"
     },
   ]
+
+  useEffect(() => {
+    // GSAP ScrollTrigger reveal for project cards
+    const cards = document.querySelectorAll(".project-card")
+    cards.forEach((card) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          }
+        }
+      )
+    })
+  }, [])
+
+  // GSAP 3D card tilt logic
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left - rect.width / 2
+    const y = e.clientY - rect.top - rect.height / 2
+
+    gsap.to(card, {
+      rotateX: -y * 0.08,
+      rotateY: x * 0.08,
+      scale: 1.025,
+      boxShadow: "0 25px 60px -15px rgba(255, 255, 255, 0.15)",
+      transformPerspective: 1000,
+      duration: 0.4,
+      ease: "power2.out"
+    })
+  }
+
+  const handleMouseLeave = (e) => {
+    const card = e.currentTarget
+    gsap.to(card, {
+      rotateX: 0,
+      rotateY: 0,
+      scale: 1,
+      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.3)",
+      duration: 0.6,
+      ease: "power3.out"
+    })
+  }
 
   const handleClick = (url, e) => {
     e.stopPropagation()
     window.open(url, "_blank")
   }
+
   return (
     <section
       id="projects"
@@ -62,19 +119,19 @@ export default function Projects() {
 
         <div className="grid grid-cols-1 gap-12 md:gap-20">
           {projects.map((project, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.8 }}
-              className="group grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
+              className="project-card group grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
+              style={{ opacity: 0 }} // Hidden initially for GSAP ScrollTrigger
             >
               <div
                 className="md:col-span-7 relative overflow-hidden rounded-2xl aspect-video cursor-pointer"
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
                 onClick={e => handleClick(project.githubUrl, e)}
+                style={{ willChange: "transform" }}
               >
-                <motion.img
+                <img
                   src={
                     project.image.startsWith("/")
                       ? project.image
@@ -100,7 +157,7 @@ export default function Projects() {
                   <div className="flex gap-3"></div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
