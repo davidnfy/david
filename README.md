@@ -11,34 +11,12 @@ Welcome to the personal portfolio website of **David Nafisy**. This site showcas
 - **Tech Stack:** List of technologies and tools mastered.
 - **Contact:** Contact information and social media
 
-## 🛠️ Installation & Running
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/davidnfy/david-portfolio.git
-   cd david-portfolio
-   ```
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-3. **Run the application**
-   ```bash
-   npm run dev
-   ```
-4. Open in browser: [http://localhost:3000](http://localhost:3000)
-
-## 📂 Folder Structure
-
-- `src/components/` — Main components: Hero, About, Education, Projects, TechStack, Contact
-- `public/img/` — Project images
-
 ## 👤 Short Profile
 
 Name: **David Nafisy**  
 Location: Malang, Indonesia  
 Status: Student at SMK Negeri 5 Malang  
-Interests: Full Stack Developer, Game Developer, Tech Enthusiast
+Interests: Full Stack Developer, Tech Enthusiast
 
 ## 📫 Contact
 
