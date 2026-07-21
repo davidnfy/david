@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Typewriter = () => {
-  const words = ["Full Stack Developer", "Game Developer", "Tech Enthusiast"];
+  const words = ["Full Stack Developer","UI/UX Enthusiast", "Data Enthusiast", "Business Intelligence Enthusiast", "Tech Enthusiast"];
   const [index, setIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -73,7 +73,6 @@ export default function About() {
       }
     );
 
-    // GSAP ScrollTrigger for right column
     gsap.fromTo(rightColRef.current,
       { opacity: 0, y: 30 },
       {
@@ -118,7 +117,7 @@ export default function About() {
         >
           <div className="space-y-8">
             <p className="text-xl md:text-2xl font-medium leading-relaxed opacity-60 text-black">
-              A vocational high school student with a strong drive toward full-stack development and game engineering.
+              A vocational high school student with a strong drive toward full-stack development and system engineering.
               I have a natural curiosity for how digital products are built—from databases and APIs to frontend interfaces and gameplay mechanics.
               Every project I take on is an opportunity to sharpen my skills and move closer to my dream career.
             </p>

@@ -22,7 +22,6 @@ export default function Education() {
   ]
 
   useEffect(() => {
-    // 1. Anime.js: Pulsing ripple rings for the circular school logos
     anime({
       targets: '.logo-pulse-ring',
       scale: [0.95, 1.45],
