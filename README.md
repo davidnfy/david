@@ -9,15 +9,7 @@ Welcome to the personal portfolio website of **David Nafisy**. This site showcas
 - **Education:** Latest education history.
 - **Projects:** Showcases several projects, complete with images and GitHub links.
 - **Tech Stack:** List of technologies and tools mastered.
-- **Contact:** Contact information and social media.
-
-## 🚀 Technologies Used
-
-- React 19 + Vite
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Lucide React Icons
+- **Contact:** Contact information and social media
 
 ## 🛠️ Installation & Running
 
