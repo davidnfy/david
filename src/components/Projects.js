@@ -41,27 +41,45 @@ export default function Projects() {
   ]
 
   useEffect(() => {
-    // GSAP ScrollTrigger reveal for project cards
     const cards = document.querySelectorAll(".project-card")
-    cards.forEach((card) => {
+    cards.forEach((card, index) => {
+      const isMobile = window.innerWidth < 768
+      const fromLeft = index % 2 === 0
+      const xOffset = fromLeft ? -120 : 120
+
       gsap.fromTo(card,
-        { opacity: 0, y: 60 },
+        {
+          opacity: 0,
+          y: isMobile ? 0 : 60,
+          x: isMobile ? xOffset : 0,
+          rotate: isMobile ? (fromLeft ? -5 : 5) : 0,
+          scale: isMobile ? 0.95 : 1
+        },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          ease: "power3.out",
+          x: 0,
+          rotate: 0,
+          scale: 1,
+          duration: isMobile ? 1.8 : 1.2,
+          ease: isMobile ? "power4.out" : "power3.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 80%",
+            start: "top 90%",
             toggleActions: "play none none none"
           }
         }
       )
     })
+
+    const handleResize = () => {
+      ScrollTrigger.refresh()
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  // GSAP 3D card tilt logic
   const handleMouseMove = (e) => {
     const card = e.currentTarget
     const rect = card.getBoundingClientRect()
@@ -122,7 +140,7 @@ export default function Projects() {
             <div
               key={index}
               className="project-card group grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
-              style={{ opacity: 0 }} // Hidden initially for GSAP ScrollTrigger
+              style={{ opacity: 0 }}
             >
               <div
                 className="md:col-span-7 relative overflow-hidden rounded-2xl aspect-video cursor-pointer"
