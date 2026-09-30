@@ -1,136 +1,213 @@
 import { useEffect, useRef } from "react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 import gsap from "gsap"
-import anime from "animejs"
-import FloatingLines from "./FloatingLines"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Box, Sparkles } from "lucide-react"
+import GhostFibers from "./GhostFibers"
+import ProfileCard from "./ProfileCard"
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Hero() {
-  const headingRef = useRef(null)
-  const metaRef = useRef(null)
-  const descRef = useRef(null)
-  const containerRef = useRef(null)
+  const sectionRef = useRef(null)
+  const titleLine1Ref = useRef(null)
+  const titleLine2Ref = useRef(null)
+  const titleLine3Ref = useRef(null)
+  const titleLine4Ref = useRef(null)
 
   useEffect(() => {
-    const lines = headingRef.current.querySelectorAll(".hero-line-inner")
-    gsap.fromTo(lines,
-      { y: "100%", opacity: 0 },
-      { y: "0%", opacity: 1, duration: 1.2, stagger: 0.15, ease: "power4.out", delay: 0.1 }
-    )
-    gsap.fromTo(metaRef.current,
-      { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 0.6 }
+    const lines = [
+      titleLine1Ref.current,
+      titleLine2Ref.current,
+      titleLine3Ref.current,
+      titleLine4Ref.current
+    ]
+    gsap.fromTo(
+      lines,
+      { y: 80, opacity: 0, rotateX: -20 },
+      {
+        y: 0,
+        opacity: 1,
+        rotateX: 0,
+        duration: 1.1,
+        stagger: 0.15,
+        ease: "power4.out",
+        delay: 0.2
+      }
     )
 
-    gsap.fromTo(descRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1.2, ease: "power3.out", delay: 0.8 }
-    )
-
-    anime({
-      targets: '.hero-profile-glow',
-      scale: [0.96, 1.06],
-      opacity: [0.5, 0.85],
-      duration: 3500,
-      direction: 'alternate',
-      loop: true,
-      easing: 'easeInOutQuad'
-    })
+    // Scroll exit animation for entire section
+    const section = sectionRef.current
+    if (section) {
+      gsap.to(section.querySelectorAll(".hero-animate"), {
+        opacity: 0,
+        y: -50,
+        stagger: 0.05,
+        ease: "power2.in",
+        scrollTrigger: {
+          trigger: section,
+          start: "bottom 90%",
+          end: "bottom 20%",
+          scrub: 0.5,
+        }
+      })
+    }
   }, [])
 
   return (
     <section
       id="home"
-      ref={containerRef}
-      className="min-h-screen flex flex-col justify-center px-8 md:px-24 py-20 relative overflow-hidden"
+      ref={sectionRef}
+      className="relative w-full min-h-screen flex flex-col justify-between px-5 sm:px-12 md:px-16 lg:px-20 xl:px-28 pt-24 sm:pt-28 pb-10 sm:pb-12 overflow-hidden bg-[#D5CCCD] text-[#291B48] select-none"
     >
-      <div className="absolute inset-0 -z-0">
-        <FloatingLines 
-          enabledWaves={["top","middle","bottom"]}
-          lineCount={6}
-          lineDistance={6}
-          bendRadius={6}
-          bendStrength={-1.5}
-          interactive={true}
-          parallax={true}
-          animationSpeed={0.8}
-          linesGradient={["#6366f1", "#a855f7", "#ec4899", "#8b5cf6"]}
-          mixBlendMode="multiply"
+      {/* Dynamic Animated Background: GhostFibers with gentle blur */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0, filter: "blur(1.5px)" }}>
+        <GhostFibers
+          lineColor="#291B48"
+          glowColor="#5E87B6"
+          backdropColor="#D5CCCD"
+          lightMode={true}
+          speed={0.2}
+          scale={1.4}
+          rotation={0}
+          rotationSpeed={0.25}
+          layers={4}
+          waveAmplitude={0.015}
+          waveFrequency={3}
+          waveSpeed={0.15}
+          layerSpeed={0.08}
+          twist={0.1}
+          twistFrequency={5}
+          twistSpeed={1.2}
+          lineFrequency={5}
+          lineSpacing={2}
+          lineSharpness={16}
+          glowFalloff={10}
+          glowIntensity={1.6}
+          brightness={2}
+          blueBoost={1.25}
+          vignette={0.4}
+          grain={0.04}
+          dpr={1}
+          className="w-full h-full"
         />
       </div>
 
-      <div className="absolute inset-0 -z-[1] bg-white/70" />
+      {/* Tech Dot-Grid Overlay for Tactile Texture */}
+      <div className="absolute inset-0 tech-dot-grid opacity-30 pointer-events-none" style={{ zIndex: 1 }} />
 
-      <div className="max-w-7xl mx-auto w-full space-y-12 relative z-10">
-        <div
-          ref={metaRef}
-          className="flex flex-wrap items-center justify-start gap-x-4 gap-y-2 text-[10px] md:text-[11px] font-black tracking-[0.3em] md:tracking-[0.4em] uppercase opacity-0 px-1 text-white"
-        >
-          <span className="whitespace-nowrap">David Nafisy</span>
-          <span className="w-1 h-1 bg-white rounded-full" />
-          <span className="whitespace-nowrap">Malang, Indonesia</span>
-          <span className="w-1 h-1 bg-white rounded-full" />
-          <span className="whitespace-nowrap">Digital Innovator</span>
-        </div>
 
-        <div className="space-y-4">
-          <h1
-            ref={headingRef}
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-extrabold leading-[1.1] md:leading-[0.9] lg:leading-[0.95] tracking-tighter text-white"
-          >
-            <div className="overflow-hidden block py-1">
-              <span className="hero-line-inner inline-block">Crafting</span>
+      {/* Main Hero Content */}
+      <div className="hero-animate w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto py-6 sm:py-8 z-10">
+        
+        {}
+        <div className="lg:col-span-8 space-y-6">
+          <div className="perspective-1000 space-y-1">
+            {}
+            <div className="overflow-hidden flex items-center gap-4">
+              <h1
+                ref={titleLine1Ref}
+                className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#291B48] uppercase"
+              >
+                Crafting
+              </h1>
+              <motion.div
+                initial={{ rotate: 0 }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+                className="hidden xl:flex w-10 h-10 rounded-2xl bg-[#D5CCCD] border border-[#9FB2C8] items-center justify-center text-[#291B48] shadow-xs"
+              >
+                <Box size={20} />
+              </motion.div>
             </div>
-            <div className="overflow-hidden block py-1">
-              <span className="hero-line-inner inline-block text-indigo-300">empathetic</span>
-            </div>
-            <div className="overflow-hidden block py-1">
-              <span className="hero-line-inner inline-block">digital</span>
-            </div>
-            <div className="overflow-hidden block py-1">
-              <span className="hero-line-inner inline-block">experiences<span className="text-indigo-300">.</span></span>
-            </div>
-          </h1>
-        </div>
 
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-12 pt-12">
-          <p
-            ref={descRef}
-            className="max-w-md text-lg md:text-xl font-medium leading-relaxed opacity-0 text-white"
-          >
-            I'm David — Technology is not just about being advanced, but about
-            how it feels to the user.
+            {/* Line 2: empathetic (Instrument Serif Italic) */}
+            <div className="overflow-hidden py-1">
+              <h1
+                ref={titleLine2Ref}
+                className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-latin italic font-normal tracking-tight leading-none text-[#5E87B6] select-none"
+              >
+                empathetic
+              </h1>
+            </div>
+
+            {/* Line 3: digital (Instrument Serif Italic) */}
+            <div className="overflow-hidden py-1">
+              <h1
+                ref={titleLine3Ref}
+                className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-latin italic font-normal tracking-tight leading-none text-[#5E87B6] select-none"
+              >
+                digital
+              </h1>
+            </div>
+
+            {/* Line 4: experiences. */}
+            <div className="overflow-hidden">
+              <h1
+                ref={titleLine4Ref}
+                className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#291B48] uppercase"
+              >
+                experiences<span className="text-[#9FB2C8]">.</span>
+              </h1>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 pt-1">
+            <span className="font-signature text-3xl sm:text-4xl text-[#5E87B6] select-none -rotate-2">
+              David Nafisy
+            </span>
+            <span className="h-px w-10 bg-[#9FB2C8]" />
+            <span className="text-[11px] font-mono font-bold tracking-widest text-[#291B48]/60 uppercase">
+              DIGITAL SIGNATURE
+            </span>
+          </div>
+
+          <p className="max-w-2xl text-base sm:text-lg text-[#291B48]/85 font-sans leading-relaxed">
+            I'm <strong className="text-[#291B48] font-black">David Nafisy</strong> — engineering software systems and interactive 3D spatial web environments with precision and tactile responsiveness.
           </p>
 
-          <motion.div
-            drag
-            dragConstraints={{ left: -150, right: 150, top: -150, bottom: 150 }}
-            dragElastic={0.1}
-            whileDrag={{ scale: 1.08, rotate: 3, cursor: "grabbing" }}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.9, type: "spring", damping: 15 }}
-            whileHover={{ scale: 1.03, cursor: "grab" }}
-            className="w-40 h-40 md:w-56 md:h-56 aspect-square relative group shrink-0 self-center md:self-auto z-20"
-          >
-            <div className="absolute inset-[-8px] rounded-full bg-linear-to-br from-indigo-400/30 via-purple-300/25 to-pink-400/30 blur-md -z-10 hero-profile-glow" />
+          <div className="pt-2 flex items-center gap-3 text-xs font-mono font-bold tracking-widest uppercase text-[#5E87B6]">
+            <Sparkles size={16} className="text-[#5E87B6]" />
+            <span>MINIMALIST 3D ARCHITECTURE</span>
+          </div>
+        </div>
 
-            <img
-              src="img/david.png"
-              alt="Work"
-              className="w-full h-full object-cover rounded-full shadow-2xl border border-white/10 pointer-events-none select-none relative z-10"
-            />
+        {}
+        <div className="lg:col-span-4 flex justify-center lg:justify-end">
+          <ProfileCard
+            name="David Nafisy"
+            title="Software Engineer"
+            handle="davidnfy"
+            status="dn"
+            contactText="Contact Me"
+            avatarUrl="/img/3.png"
+            miniAvatarUrl="/img/david1.png"
+            showUserInfo={true}
+            enableTilt={true}
+            enableMobileTilt={false}
+            onContactClick={() => {
+              const el = document.querySelector("#contact")
+              if (el) el.scrollIntoView({ behavior: "smooth" })
+            }}
+            behindGlowEnabled={true}
+            behindGlowColor="rgba(255, 255, 255, 0.68)"
+            innerGradient="linear-gradient(145deg, rgba(41, 27, 72, 0.95) 0%, rgba(94, 135, 182, 0.38) 100%)"
+          />
+        </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 1, 0] }}
-              transition={{ delay: 2.5, duration: 3, repeat: Infinity }}
-              className="absolute -top-6 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10 pointer-events-none z-20"
-            >
-              <span className="text-[9px] font-black uppercase tracking-widest opacity-60 whitespace-nowrap text-white">
-                Drag me
-              </span>
-            </motion.div>
-          </motion.div>
+      </div>
+
+      {}
+      <div className="hero-animate w-full border-t border-[#9FB2C8] pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-[#291B48]/70 font-bold tracking-wider z-10 gap-2">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-[#5E87B6] rounded-full" />
+          <span>SOFTWARE ENGINEER</span>
+        </div>
+        <div className="flex items-center gap-6 uppercase text-[11px] text-[#291B48]">
+          <span>•</span>
+          <span className="text-[#5E87B6]">East Java</span>
+          <span>•</span>
+          <span className="text-[#9FB2C8]">MALANG</span>
         </div>
       </div>
     </section>

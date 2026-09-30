@@ -58,47 +58,22 @@ uniform vec3 lineGradient[8];
 uniform int lineGradientCount;
 
 const vec3 BLACK = vec3(0.0);
-const vec3 PINK  = vec3(233.0, 71.0, 245.0) / 255.0;
-const vec3 BLUE  = vec3(47.0,  75.0, 162.0) / 255.0;
+const vec3 AZURE = vec3(94.0, 135.0, 182.0) / 255.0;
+const vec3 CLOUD = vec3(159.0, 178.0, 200.0) / 255.0;
 
 mat2 rotate(float r) {
   return mat2(cos(r), sin(r), -sin(r), cos(r));
 }
 
 vec3 background_color(vec2 uv) {
-  vec3 col = vec3(0.0);
-
-  float y = sin(uv.x - 0.2) * 0.3 - 0.1;
-  float m = uv.y - y;
-
-  col += mix(BLUE, BLACK, smoothstep(0.0, 1.0, abs(m)));
-  col += mix(PINK, BLACK, smoothstep(0.0, 1.0, abs(m - 0.8)));
-  return col * 0.5;
+  return vec3(0.0);
 }
 
 vec3 getLineColor(float t, vec3 baseColor) {
   if (lineGradientCount <= 0) {
-    return baseColor;
+    return vec3(41.0, 27.0, 72.0) / 255.0 * 0.5;
   }
-
-  vec3 gradientColor;
-  
-  if (lineGradientCount == 1) {
-    gradientColor = lineGradient[0];
-  } else {
-    float clampedT = clamp(t, 0.0, 0.9999);
-    float scaled = clampedT * float(lineGradientCount - 1);
-    int idx = int(floor(scaled));
-    float f = fract(scaled);
-    int idx2 = min(idx + 1, lineGradientCount - 1);
-
-    vec3 c1 = lineGradient[idx];
-    vec3 c2 = lineGradient[idx2];
-    
-    gradientColor = mix(c1, c2, f);
-  }
-  
-  return gradientColor * 0.5;
+  return lineGradient[0] * 0.6;
 }
 
   float wave(vec2 uv, float offset, vec2 screenUv, vec2 mouseUv, bool shouldBend) {

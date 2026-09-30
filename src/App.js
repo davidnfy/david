@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 import Hero from "./components/Hero"
 import About from "./components/About"
 import Education from "./components/Education"
@@ -6,98 +6,72 @@ import Projects from "./components/Projects"
 import TechStack from "./components/TechStack"
 import Contact from "./components/Contact"
 import Navbar from "./components/Navbar"
+import GlowCursor from "./components/GlowCursor"
 import { motion, useScroll, useSpring } from "framer-motion"
-import gsap from "gsap"
 
 export default function App() {
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
+    stiffness: 120,
     damping: 30,
     restDelta: 0.001
   })
 
-  const blob1Ref = useRef(null)
-  const blob2Ref = useRef(null)
-  const blob3Ref = useRef(null)
-
   useEffect(() => {
-    gsap.to(blob1Ref.current, {
-      x: "random(-80, 80)",
-      y: "random(-80, 80)",
-      duration: 15,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    })
-    gsap.to(blob2Ref.current, {
-      x: "random(-120, 120)",
-      y: "random(-120, 120)",
-      duration: 18,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    })
-    gsap.to(blob3Ref.current, {
-      x: "random(-100, 100)",
-      y: "random(-100, 100)",
-      duration: 12,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    })
-
-    const handleMouseMove = (e) => {
-      const { clientX, clientY } = e
-      const moveX = (clientX - window.innerWidth / 2) * 0.03
-      const moveY = (clientY - window.innerHeight / 2) * 0.03
-
-      gsap.to(".blob-container", {
-        x: moveX,
-        y: moveY,
-        duration: 1.5,
-        ease: "power1.out"
-      })
+    const handleAnchorClick = (e) => {
+      const target = e.target.closest("a")
+      if (target && target.hash && target.hash.startsWith("#")) {
+        const el = document.querySelector(target.hash)
+        if (el) {
+          e.preventDefault()
+          el.scrollIntoView({ behavior: "smooth" })
+        }
+      }
     }
-
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
+    document.addEventListener("click", handleAnchorClick)
+    return () => document.removeEventListener("click", handleAnchorClick)
   }, [])
 
   return (
-    <div className="min-h-screen selection:bg-empathetic selection:text-white relative text-black bg-[#f5f5ff] overflow-x-hidden">
-      <div className="blob-container fixed inset-0 -z-20 pointer-events-none overflow-hidden opacity-40">
-        <div 
-          ref={blob1Ref} 
-          className="absolute w-[50vw] h-[50vw] rounded-full bg-indigo-300/20 blur-[130px]" 
-          style={{ top: "-10%", left: "-10%" }}
-        />
-        <div 
-          ref={blob2Ref} 
-          className="absolute w-[45vw] h-[45vw] rounded-full bg-pink-200/25 blur-[120px]" 
-          style={{ bottom: "10%", right: "-10%" }}
-        />
-        <div 
-          ref={blob3Ref} 
-          className="absolute w-[40vw] h-[40vw] rounded-full bg-purple-200/20 blur-[140px]" 
-          style={{ top: "40%", left: "50%" }}
-        />
-      </div>
+    <div className="min-h-screen w-full relative text-[#291B48] bg-[#D5CCCD] overflow-x-clip selection:bg-[#5E87B6] selection:text-[#D5CCCD]">
+      {/* Interactive WebGL Glow Cursor Trail from React Bits (Exclusive 4-Color Palette) */}
+      <GlowCursor
+        color="#5E87B6"
+        secondaryColor="#291B48"
+        trailLength={24}
+        trailWidth={6}
+        trailTaper={0.75}
+        followSpeed={0.2}
+        glowIntensity={1.6}
+        glowSpread={1.1}
+        hotspot={0}
+        brightness={1.15}
+        opacity={0.8}
+        pulseSpeed={0.8}
+        noiseStrength={0}
+        idleFade
+        idleTimeout={500}
+        fadeDuration={600}
+        maxDevicePixelRatio={1.0}
+        blendMode="normal"
+        className="fixed inset-0 pointer-events-none z-40 overflow-hidden"
+      />
 
-      <div className="soft-mesh opacity-20" />
-
+      {/* Top Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-empathetic z-50 origin-left"
+        className="fixed top-0 left-0 right-0 h-1 bg-[#5E87B6] z-50 origin-left shadow-xs"
         style={{ scaleX }}
       />
 
+      {/* Floating Island Navigation */}
       <Navbar />
 
-      <main className="max-w-400 mx-auto overflow-x-hidden">
+      {/* Full-Frame Main Container */}
+      <main className="w-full overflow-x-clip">
         <Hero />
         <About />
-        <Education />
         <Projects />
+        <Education />
         <TechStack />
         <Contact />
       </main>

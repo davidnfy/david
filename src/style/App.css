@@ -1,13 +1,13 @@
 .app-container {
-  background-color: #f5f5ff;
+  background-color: #D5CCCD;
   min-height: 100vh;
   position: relative;
-  color: black;
+  color: #291B48;
 }
 
 .app-container ::selection {
-  background-color: #e74c3c; /* Warna empathetic - sesuaikan dengan warna Anda */
-  color: white;
+  background-color: #5E87B6;
+  color: #D5CCCD;
 }
 
 .soft-mesh {
@@ -20,13 +20,13 @@
   left: 0;
   right: 0;
   height: 0.25rem;
-  background-color: #e74c3c; /* Warna empathetic */
+  background-color: #5E87B6;
   z-index: 100;
   transform-origin: left;
 }
 
 .main-content {
-  max-width: 100rem; /* 400px? Mungkin maksudnya 100%? Sesuaikan */
+  max-width: 100rem;
   margin-left: auto;
   margin-right: auto;
   overflow-x: hidden;
