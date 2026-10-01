@@ -8,6 +8,11 @@ import Contact from "./components/Contact"
 import Navbar from "./components/Navbar"
 import GlowCursor from "./components/GlowCursor"
 import { motion, useScroll, useSpring } from "framer-motion"
+import Lenis from "lenis"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function App() {
   const { scrollYProgress } = useScroll()
@@ -17,19 +22,46 @@ export default function App() {
     restDelta: 0.001
   })
 
+  // Initialize Lenis buttery-smooth scrolling with GSAP ScrollTrigger sync
   useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.2,
+      infinite: false,
+    })
+
+    // Synchronize Lenis scroll with GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update)
+
+    const updateTicker = (time) => {
+      lenis.raf(time * 1000)
+    }
+
+    gsap.ticker.add(updateTicker)
+    gsap.ticker.lagSmoothing(0)
+
     const handleAnchorClick = (e) => {
       const target = e.target.closest("a")
       if (target && target.hash && target.hash.startsWith("#")) {
         const el = document.querySelector(target.hash)
         if (el) {
           e.preventDefault()
-          el.scrollIntoView({ behavior: "smooth" })
+          lenis.scrollTo(el, { offset: 0, duration: 1.2 })
         }
       }
     }
     document.addEventListener("click", handleAnchorClick)
-    return () => document.removeEventListener("click", handleAnchorClick)
+
+    return () => {
+      document.removeEventListener("click", handleAnchorClick)
+      gsap.ticker.remove(updateTicker)
+      lenis.destroy()
+    }
   }, [])
 
   return (

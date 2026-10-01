@@ -94,26 +94,26 @@ export default function About() {
       scale: 1,
       z: 0,
       opacity: 1,
-      filter: "blur(0px)",
+      force3D: true,
       transformPerspective: 2000,
       transformOrigin: "center center"
     })
 
     gsap.set(contentEl, {
-      scale: 0.6,
-      z: -500,
+      scale: 0.75,
+      z: -350,
       opacity: 0,
-      filter: "blur(0px)",
+      force3D: true,
       pointerEvents: "none",
       transformPerspective: 2000,
       transformOrigin: "center center"
     })
 
     gsap.set(spiralEl, {
-      scale: 0.45,
-      z: -900,
+      scale: 0.65,
+      z: -600,
       opacity: 0,
-      filter: "blur(10px)",
+      force3D: true,
       pointerEvents: "none",
       transformPerspective: 2000,
       transformOrigin: "center center"
@@ -124,13 +124,15 @@ export default function About() {
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "+=3800",
+          end: "+=2800",
           pin: true,
-          scrub: 0.8,
+          scrub: 1.2,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+          fastScrollEnd: true,
+          preventOverlaps: true,
           onUpdate: (self) => {
-            if (self.progress > 0.25 && self.progress < 0.65 && counterRef1.current && counterRef1.current.dataset.animated !== "true") {
+            if (self.progress > 0.22 && self.progress < 0.68 && counterRef1.current && counterRef1.current.dataset.animated !== "true") {
               counterRef1.current.dataset.animated = "true"
               const c1 = { val: 0 }
               anime({
@@ -138,7 +140,7 @@ export default function About() {
                 val: 2,
                 round: 1,
                 easing: "easeOutExpo",
-                duration: 1000,
+                duration: 900,
                 update: () => {
                   if (counterRef1.current) counterRef1.current.innerHTML = `${c1.val}+`
                 }
@@ -148,72 +150,72 @@ export default function About() {
         }
       })
 
-      // STAGE 1: Prompt fades
-      tl.to(promptEl, {
-        opacity: 0,
-        y: -40,
-        duration: 0.12,
-        ease: "power1.out"
-      }, 0)
-
+      // STAGE 1: Fly-through "DAVID NAFISY" with zero filter lag
       tl.to(nameEl, {
-        scale: 22,
-        z: 1400,
+        scale: 6.5,
+        z: 900,
         opacity: 0,
-        filter: "blur(16px)",
+        force3D: true,
         ease: "power2.inOut",
         duration: 0.35
       }, 0)
 
       if (threeEl) {
         tl.to(threeEl, {
-          scale: 1.5,
-          opacity: 0.75,
+          scale: 1.35,
+          opacity: 0.5,
+          force3D: true,
           ease: "power1.out",
           duration: 0.35
         }, 0)
 
         tl.to(threeEl, {
-          scale: 2.1,
-          opacity: 0.6,
+          scale: 1.7,
+          opacity: 0.35,
+          force3D: true,
           ease: "power1.out",
           duration: 0.4
         }, 0.55)
       }
 
+      // STAGE 2: Smoothly zooms into focus
       tl.to(contentEl, {
         scale: 1,
         z: 0,
         opacity: 1,
+        force3D: true,
         pointerEvents: "auto",
         ease: "power2.out",
-        duration: 0.32
-      }, 0.18)
+        duration: 0.3
+      }, 0.15)
 
-      tl.to({}, { duration: 0.25 })
+      // Comfortable reading dwell time
+      tl.to({}, { duration: 0.28 })
 
+      // STAGE 2 -> STAGE 3: Smooth fly-through reveal
       tl.to(contentEl, {
-        scale: 18,
-        z: 1300,
+        scale: 5.5,
+        z: 850,
         opacity: 0,
-        filter: "blur(16px)",
+        force3D: true,
         pointerEvents: "none",
         ease: "power2.inOut",
         duration: 0.35
       })
 
-
+      // STAGE 3: Interactive Artifact Spiral settles into view
       tl.to(spiralEl, {
         scale: 1,
         z: 0,
         opacity: 1,
-        filter: "blur(0px)",
+        force3D: true,
         pointerEvents: "auto",
         ease: "power2.out",
         duration: 0.35
-      }, "<0.12")
+      }, "<0.1")
 
-      tl.to({}, { duration: 0.35 })
+      // Stage 3 resting dwell time
+      tl.to({}, { duration: 0.3 })
 
     }, section)
 
@@ -236,8 +238,8 @@ export default function About() {
         {/* Background Solid Tech Grid */}
         <div className="absolute inset-0 solid-tech-grid opacity-50 pointer-events-none" style={{ zIndex: -2 }} />
 
-        {/* 3D Three.js Geometries - Softened with gentle blur for reading comfort */}
-        <div ref={threeRef} className="absolute inset-0 w-full h-full pointer-events-none opacity-65" style={{ zIndex: -1, filter: "blur(2.5px)" }}>
+        {/* 3D Three.js Geometries - Clean GPU rendering without heavy raster blur */}
+        <div ref={threeRef} className="absolute inset-0 w-full h-full pointer-events-none opacity-50" style={{ zIndex: -1 }}>
           <ThreeCanvas3D className="w-full h-full" />
         </div>
 
@@ -245,7 +247,7 @@ export default function About() {
         <div
           ref={nameRef}
           className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-6 text-center z-10 preserve-3d"
-          style={{ willChange: "transform, opacity, filter" }}
+          style={{ willChange: "transform, opacity", transform: "translateZ(0)", backfaceVisibility: "hidden" }}
         >
 
           {}
@@ -263,7 +265,7 @@ export default function About() {
         <div
           ref={contentRef}
           className="absolute inset-0 w-full h-full max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 flex flex-col justify-center z-20 py-8 preserve-3d overflow-y-auto lg:overflow-visible"
-          style={{ willChange: "transform, opacity, filter" }}
+          style={{ willChange: "transform, opacity", transform: "translateZ(0)", backfaceVisibility: "hidden" }}
         >
           {/* Section Subtitle Bar (Hidden on small mobile to preserve perfect vertical balance) */}
           <div className="hidden sm:flex items-center justify-between border-b border-[#9FB2C8] pb-3 mb-6 lg:mb-8 shrink-0">
@@ -408,7 +410,7 @@ export default function About() {
         <div
           ref={spiralRef}
           className="absolute inset-0 flex flex-col items-center justify-center px-4 sm:px-8 z-30 preserve-3d"
-          style={{ willChange: "transform, opacity, filter" }}
+          style={{ willChange: "transform, opacity", transform: "translateZ(0)", backfaceVisibility: "hidden" }}
         >
           <div className="w-full max-w-5xl flex flex-col items-center justify-center">
             {/* Header Badge & Title */}
