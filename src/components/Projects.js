@@ -24,8 +24,6 @@ export default function Projects() {
       id: 1,
       num: "01",
       title: "Church Management System",
-      category: "FULL-STACK",
-      year: "2024",
       description: "Church attendance, member tracking, and service management system with relational database architecture.",
       image: "/img/absen-gereja.png",
       githubUrl: "https://github.com/davidnfy/absen-gereja",
@@ -34,7 +32,6 @@ export default function Projects() {
       id: 2,
       num: "02",
       title: "Pawtify",
-      category: "APPLICATION",
       year: "2024",
       description: "Pet management application for animal health logs, schedules, and vaccination records.",
       image: "/img/pawtify.png",
@@ -44,7 +41,6 @@ export default function Projects() {
       id: 3,
       num: "03",
       title: "Dompetku",
-      category: "FINTECH",
       year: "2024",
       description: "Personal finance and expense tracker featuring transaction history and cashflow insights.",
       image: "/img/dompetku.png",
@@ -54,7 +50,6 @@ export default function Projects() {
       id: 4,
       num: "04",
       title: "Todo List Pro",
-      category: "PRODUCTIVITY",
       year: "2023",
       description: "Task manager with local state persistence, prioritized scheduling, and intuitive filtering.",
       image: "/img/todo-list.png",
@@ -64,12 +59,18 @@ export default function Projects() {
       id: 5,
       num: "05",
       title: "Website Profile Showcase",
-      category: "CREATIVE WEB",
-      year: "2026",
       description: "Personal digital portfolio emphasizing spatial design, 3D interactions, and minimalist aesthetics.",
       image: "/img/profile-web.png",
       githubUrl: "https://github.com/davidnfy/davidnafisy",
     },
+    {
+      id: 6,
+      num: "06",
+      title: "Karang Taruna Kota Batu",
+      description: "website to manage members, news, and activities for the batu city youth organization (Karang Taruna).",
+      image: "/img/kartar.png",
+      githubUrl: "https://kartar.batu.city"
+    }
   ]
 
   useEffect(() => {
@@ -269,11 +270,6 @@ export default function Projects() {
                   loading="lazy"
                 />
 
-                {/* Pill Tag & GitHub trigger */}
-                <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#291B48]/90 backdrop-blur-xs text-[#D5CCCD] text-xs font-black tracking-wider uppercase border border-[#9FB2C8]/40 z-10">
-                  {project.category}
-                </div>
-
                 <a
                   href={project.githubUrl}
                   target="_blank"
@@ -291,15 +287,7 @@ export default function Projects() {
                   <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-[#291B48] group-hover:text-[#5E87B6] transition-colors">
                     <RollText>{project.title}</RollText>
                   </h3>
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#291B48]/60 hover:text-[#291B48] transition-colors"
-                    aria-label={`View ${project.title} on GitHub`}
-                  >
-                    <Github size={18} />
-                  </a>
+                 
                 </div>
 
                 <p className="text-sm text-[#291B48]/75 font-normal leading-relaxed">

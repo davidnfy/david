@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getLenis } from "../../lib/motion"
 
 const SECTIONS = [
-  { id: "home", label: "INTRO" },
+  { id: "home", label: "HOME" },
   { id: "about", label: "ABOUT" },
   { id: "projects", label: "WORKS" },
   { id: "education", label: "ACADEMIC" },
@@ -10,11 +10,6 @@ const SECTIONS = [
   { id: "contact", label: "CONNECT" }
 ]
 
-/**
- * United-in-Football-style sticky section index (desktop only).
- * Active item = the section crossing the vertical centre of the viewport.
- * Works with pinned sections because it reads live bounding rects.
- */
 export default function SectionIndex() {
   const [active, setActive] = useState("home")
 
