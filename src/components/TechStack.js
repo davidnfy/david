@@ -240,7 +240,7 @@ export default function TechStack() {
               ENGINEERING CORE
             </span>
             <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-[#291B48] uppercase mt-1">
-              ARCHITECTURAL PILLARS.
+              Working technique
             </h3>
           </div>
           <span className="text-xs text-[#291B48]/70 font-mono">
