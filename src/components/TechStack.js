@@ -2,6 +2,9 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Wrench } from "lucide-react"
+import ScaleInTitle from "./fx/ScaleInTitle"
+import ParallaxSticker from "./fx/ParallaxSticker"
+import CrencyFlipCard from "./fx/CrencyFlipCard"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -173,15 +176,30 @@ export default function TechStack() {
     <section id="stack" className="relative w-full py-28 bg-[#D5CCCD] border-t border-[#9FB2C8] overflow-hidden">
       <div className="absolute inset-0 tech-dot-grid opacity-30 pointer-events-none" />
 
+      {/* Floating Badges */}
+      <ParallaxSticker
+        variant="plum"
+        from={{ y: -25, rotate: -5 }}
+        to={{ y: 35, rotate: 5 }}
+        className="top-12 right-10 hidden sm:block"
+      >
+        ✦ 60 FPS ENGINE
+      </ParallaxSticker>
+
       {/* Header */}
       <div ref={headerRef} className="w-full px-6 sm:px-12 md:px-16 lg:px-20 xl:px-28 mb-14 space-y-3 relative z-10">
         <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-[#5E87B6]">
           <Wrench size={16} />
           <span>TECH & TOOLS</span>
         </div>
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#291B48] uppercase">
+        <ScaleInTitle
+          as="h2"
+          from={1.5}
+          origin="left center"
+          className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#291B48] uppercase"
+        >
           TECH <span className="text-[#5E87B6]">ECOSYSTEM.</span>
-        </h2>
+        </ScaleInTitle>
         <p className="max-w-xl text-[#291B48]/70 text-sm sm:text-base font-medium">
           Modern languages, 3D WebGL graphics, full-stack frameworks, and databases.
         </p>
@@ -211,6 +229,53 @@ export default function TechStack() {
               <TechItemMinimal key={`r2-${tech.name}-${idx}`} tech={tech} />
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Crency Agency-style Interactive 3D Architectural Pillars */}
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-12 md:px-16 lg:px-20 mt-16 pt-12 border-t border-[#9FB2C8] relative z-10">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+          <div>
+            <span className="text-xs font-black tracking-[0.25em] text-[#5E87B6] uppercase">
+              ENGINEERING CORE
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-[#291B48] uppercase mt-1">
+              ARCHITECTURAL PILLARS.
+            </h3>
+          </div>
+          <span className="text-xs text-[#291B48]/70 font-mono">
+            [ HOVER OR CLICK TO INSPECT 3D BLUEPRINT ]
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <CrencyFlipCard
+            frontBadge="STAGE 01"
+            frontTag="[ 01 ]"
+            frontTitle="Plan & Architect"
+            backBadge="ARCHITECTURE"
+            backTag="01 // PLANNING"
+            backTitle="Plan & Architect"
+            backDescription="Understanding client requirements, designing robust database architectures, and selecting the most efficient tech stack for scalable performance."
+          />
+          <CrencyFlipCard
+            frontBadge="STAGE 02"
+            frontTag="[ 02 ]"
+            frontTitle="Code & Build"
+            backBadge="DEVELOPMENT"
+            backTag="02 // CODING"
+            backTitle="Code & Build"
+            backDescription="Writing clean, maintainable code, building responsive interfaces, and seamlessly integrating frontend logic with robust backend APIs."
+          />
+          <CrencyFlipCard
+            frontBadge="STAGE 03"
+            frontTag="[ 03 ]"
+            frontTitle="Test & Deploy"
+            backBadge="PRODUCTION"
+            backTag="03 // DEPLOYMENT"
+            backTitle="Test & Deploy"
+            backDescription="Conducting comprehensive debugging, optimizing loading performance, and deploying production-ready applications via automated CI/CD pipelines."
+          />
         </div>
       </div>
 

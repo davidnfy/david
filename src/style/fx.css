@@ -1,0 +1,346 @@
+/* ==========================================================================
+   FX layer — motion patterns adapted from roiheads.com, ryanritzenthaler.com
+   and unitedinfootball. Palette: #291B48 / #D5CCCD / #5E87B6 / #9FB2C8.
+   Everything animates transform / opacity only.
+   ========================================================================== */
+
+/* ---------- Floating stickers ---------- */
+.fx-sticker {
+  position: absolute;
+  z-index: 20;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.fx-sticker__body {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.6em 1.15em;
+  border-radius: 9999px;
+  border: 1.5px solid #291B48;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(10px, 1.05vw, 14px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 4px 5px 0 0 #291B48;
+}
+
+.fx-sticker--plum .fx-sticker__body {
+  background: #291B48;
+  color: #D5CCCD;
+  box-shadow: 4px 5px 0 0 #5E87B6;
+}
+
+.fx-sticker--azure .fx-sticker__body {
+  background: #5E87B6;
+  color: #D5CCCD;
+}
+
+.fx-sticker--blush .fx-sticker__body {
+  background: #D5CCCD;
+  color: #291B48;
+}
+
+.fx-sticker--cloud .fx-sticker__body {
+  background: #9FB2C8;
+  color: #291B48;
+}
+
+/* ---------- Scale-in titles ---------- */
+.fx-scale-in {
+  display: block;
+  will-change: transform;
+}
+
+/* ---------- Split reveal ---------- */
+.fx-split__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0 0.06em 0.1em 0;
+  margin-bottom: -0.1em;
+}
+
+.fx-split__word {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------- Velocity marquee ---------- */
+.fx-marquee-zone {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 2.25rem 0;
+  background: #D5CCCD;
+}
+
+.fx-marquee {
+  width: 112%;
+  margin-left: -6%;
+  overflow: hidden;
+  border-top: 1.5px solid #291B48;
+  border-bottom: 1.5px solid #291B48;
+}
+
+.fx-marquee--plum {
+  background: #291B48;
+  color: #D5CCCD;
+}
+
+.fx-marquee--azure {
+  background: #5E87B6;
+  color: #D5CCCD;
+}
+
+.fx-marquee--blush {
+  background: #D5CCCD;
+  color: #291B48;
+}
+
+.fx-marquee__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.fx-marquee__group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.fx-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.18em 0.45em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(1.75rem, 5.5vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fx-marquee__star {
+  font-style: normal;
+  font-size: 0.55em;
+  color: #5E87B6;
+}
+
+.fx-marquee--azure .fx-marquee__star {
+  color: #291B48;
+}
+
+/* ---------- Roll text ---------- */
+.fx-roll {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: 1.2;
+}
+
+.fx-roll__top,
+.fx-roll__bottom {
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.fx-roll__bottom {
+  position: absolute;
+  inset: 0;
+  transform: translateY(105%);
+}
+
+a:hover .fx-roll__top,
+button:hover .fx-roll__top,
+.fx-roll:hover .fx-roll__top {
+  transform: translateY(-105%);
+}
+
+a:hover .fx-roll__bottom,
+button:hover .fx-roll__bottom,
+.fx-roll:hover .fx-roll__bottom {
+  transform: translateY(0);
+}
+
+/* ---------- Press button ---------- */
+.fx-press {
+  --depth: 6px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: var(--depth);
+  border-radius: 9999px;
+  background: #291B48;
+  transform: rotate(-1.5deg);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.fx-press__face {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.95em 1.7em;
+  border-radius: 9999px;
+  border: 1.5px solid #291B48;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transform: translateY(0);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.fx-press--azure .fx-press__face {
+  background: #5E87B6;
+  color: #D5CCCD;
+}
+
+.fx-press--blush .fx-press__face {
+  background: #D5CCCD;
+  color: #291B48;
+}
+
+.fx-press:hover {
+  transform: rotate(0deg);
+  box-shadow: 0 0 2.5rem -0.5rem rgba(94, 135, 182, 0.6);
+}
+
+.fx-press:hover .fx-press__face {
+  transform: translateY(3px);
+}
+
+.fx-press:active .fx-press__face {
+  transform: translateY(var(--depth));
+}
+
+.fx-press__label .fx-roll__top,
+.fx-press__label .fx-roll__bottom {
+  background: linear-gradient(89deg, #D5CCCD 22%, #9FB2C8 33%, #D5CCCD 40%, #D5CCCD 57%, #9FB2C8 70%, #D5CCCD 80%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fx-shimmer 3s ease-in-out infinite alternate;
+}
+
+.fx-press--blush .fx-press__label .fx-roll__top,
+.fx-press--blush .fx-press__label .fx-roll__bottom {
+  background-image: linear-gradient(89deg, #291B48 22%, #5E87B6 33%, #291B48 40%, #291B48 57%, #5E87B6 70%, #291B48 80%);
+}
+
+@keyframes fx-shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: 0% 0; }
+}
+
+/* ---------- Section index (desktop only) ---------- */
+.fx-index {
+  position: fixed;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: none;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+@media (min-width: 1280px) {
+  .fx-index { display: flex; }
+}
+
+.fx-index__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: rgba(41, 27, 72, 0.45);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.fx-index__num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.fx-index__line {
+  width: 14px;
+  height: 1.5px;
+  background: currentColor;
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.fx-index__label {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fx-index__item:hover,
+.fx-index__item.is-active {
+  color: #291B48;
+}
+
+.fx-index__item.is-active .fx-index__line {
+  transform: scaleX(2.6);
+  background: #5E87B6;
+}
+
+.fx-index__item.is-active .fx-index__label,
+.fx-index__item:hover .fx-index__label {
+  opacity: 1;
+  transform: translateX(26px);
+}
+
+.fx-index__item.is-active .fx-index__label {
+  color: #5E87B6;
+}
+
+/* ---------- Project list view preview ---------- */
+.fx-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 45;
+  width: 320px;
+  aspect-ratio: 16 / 10;
+  pointer-events: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1.5px solid #291B48;
+  box-shadow: 6px 8px 0 0 #291B48;
+  background: #D5CCCD;
+  will-change: transform;
+}
+
+.fx-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .fx-roll__top,
+  .fx-roll__bottom,
+  .fx-press,
+  .fx-press__face {
+    transition: none !important;
+  }
+  .fx-press__label .fx-roll__top,
+  .fx-press__label .fx-roll__bottom {
+    animation: none !important;
+  }
+}

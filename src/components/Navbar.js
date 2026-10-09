@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import anime from "animejs"
 import { X, ArrowUpRight } from "lucide-react"
+import RollText from "./fx/RollText"
 
 export default function Navbar() {
   const [visible, setVisible] = useState(true)
@@ -154,7 +155,7 @@ export default function Navbar() {
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
-                      {item.name}
+                      <RollText>{item.name}</RollText>
                     </a>
                   )
                 })}
@@ -219,7 +220,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-[#5E87B6] animate-pulse" />
                   <span className="text-xs font-mono font-bold tracking-widest text-[#9FB2C8] uppercase">
-                    dnfy
+                    NAVIGATION // 01-05
                   </span>
                 </div>
                 <button

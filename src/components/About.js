@@ -129,8 +129,6 @@ export default function About() {
           scrub: 1.2,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          fastScrollEnd: true,
-          preventOverlaps: true,
           onUpdate: (self) => {
             if (self.progress > 0.22 && self.progress < 0.68 && counterRef1.current && counterRef1.current.dataset.animated !== "true") {
               counterRef1.current.dataset.animated = "true"
@@ -425,21 +423,21 @@ export default function About() {
 
             {}
             <div
-              className="h-[420px] sm:h-[500px] md:h-[600px] w-full max-w-[1100px] relative pointer-events-auto overflow-hidden"
+              className="h-[460px] sm:h-[520px] md:h-[580px] w-full max-w-[1000px] relative pointer-events-auto overflow-hidden"
             >
               <InfiniteSpiral
                 items={spiralImages}
                 animationMode="all"
                 speed={0.55}
-                radius={340}
+                radius={175}
                 cardWidth={165}
                 cardHeight={165}
-                verticalSpacing={130}
+                verticalSpacing={48}
                 perspective={1200}
                 cardRadius={16}
-                centerScale={1.25}
-                edgeBlur={3}
-                cardsPerTurn={4.5}
+                centerScale={1.12}
+                edgeBlur={0}
+                cardsPerTurn={5.2}
                 pauseOnHover
               />
             </div>

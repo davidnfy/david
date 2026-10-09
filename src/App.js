@@ -5,12 +5,13 @@ import Education from "./components/Education"
 import Projects from "./components/Projects"
 import TechStack from "./components/TechStack"
 import Contact from "./components/Contact"
-import Navbar from "./components/Navbar"
-import GlowCursor from "./components/GlowCursor"
 import { motion, useScroll, useSpring } from "framer-motion"
 import Lenis from "lenis"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { setLenis } from "./lib/motion"
+import SectionIndex from "./components/fx/SectionIndex"
+import VelocityMarquee from "./components/fx/VelocityMarquee"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -37,6 +38,12 @@ export default function App() {
 
     // Synchronize Lenis scroll with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update)
+    setLenis(lenis)
+
+    const handleNativeScroll = () => {
+      ScrollTrigger.update()
+    }
+    window.addEventListener("scroll", handleNativeScroll, { passive: true })
 
     const updateTicker = (time) => {
       lenis.raf(time * 1000)
@@ -48,10 +55,15 @@ export default function App() {
     const handleAnchorClick = (e) => {
       const target = e.target.closest("a")
       if (target && target.hash && target.hash.startsWith("#")) {
-        const el = document.querySelector(target.hash)
-        if (el) {
+        const hash = target.hash
+        const el = document.querySelector(hash)
+        if (el || hash === "#home") {
           e.preventDefault()
-          lenis.scrollTo(el, { offset: 0, duration: 1.2 })
+          if (hash === "#home") {
+            lenis.scrollTo(0, { duration: 1.0, onComplete: () => ScrollTrigger.refresh() })
+          } else if (el) {
+            lenis.scrollTo(el, { offset: 0, duration: 1.2, onComplete: () => ScrollTrigger.refresh() })
+          }
         }
       }
     }
@@ -59,52 +71,49 @@ export default function App() {
 
     return () => {
       document.removeEventListener("click", handleAnchorClick)
+      window.removeEventListener("scroll", handleNativeScroll)
       gsap.ticker.remove(updateTicker)
+      setLenis(null)
       lenis.destroy()
     }
   }, [])
 
   return (
     <div className="min-h-screen w-full relative text-[#291B48] bg-[#D5CCCD] overflow-x-clip selection:bg-[#5E87B6] selection:text-[#D5CCCD]">
-      {/* Interactive WebGL Glow Cursor Trail from React Bits (Exclusive 4-Color Palette) */}
-      <GlowCursor
-        color="#5E87B6"
-        secondaryColor="#291B48"
-        trailLength={24}
-        trailWidth={6}
-        trailTaper={0.75}
-        followSpeed={0.2}
-        glowIntensity={1.6}
-        glowSpread={1.1}
-        hotspot={0}
-        brightness={1.15}
-        opacity={0.8}
-        pulseSpeed={0.8}
-        noiseStrength={0}
-        idleFade
-        idleTimeout={500}
-        fadeDuration={600}
-        maxDevicePixelRatio={1.0}
-        blendMode="normal"
-        className="fixed inset-0 pointer-events-none z-40 overflow-hidden"
-      />
-
       {/* Top Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-[#5E87B6] z-50 origin-left shadow-xs"
         style={{ scaleX }}
       />
 
-      {/* Floating Island Navigation */}
-      <Navbar />
+      {/* United in Football-style Section Index (Desktop TOC) */}
+      <SectionIndex />
 
       {/* Full-Frame Main Container */}
       <main className="w-full overflow-x-clip">
         <Hero />
         <About />
+
+        {/* Dynamic Velocity Marquee Band #1 */}
+        <VelocityMarquee
+          items={["FULL-STACK", "CREATIVE TECH", "3D SPATIAL", "UI ARCHITECTURE"]}
+          variant="plum"
+          direction={1}
+          tilt={-1.2}
+        />
+
         <Projects />
         <Education />
         <TechStack />
+
+        {/* Dynamic Velocity Marquee Band #2 */}
+        <VelocityMarquee
+          items={["REACT", "THREE.JS", "GSAP", "TAILWIND", "TYPESCRIPT", "PHP & LARAVEL"]}
+          variant="azure"
+          direction={-1}
+          tilt={1.2}
+        />
+
         <Contact />
       </main>
     </div>

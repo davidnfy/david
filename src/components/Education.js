@@ -52,8 +52,7 @@ export default function Education() {
     if (canvasContainer) {
       gsap.set(canvasContainer, {
         opacity: 0.38,
-        scale: 1,
-        filter: "blur(0.5px)"
+        scale: 1
       })
     }
 
@@ -62,36 +61,37 @@ export default function Education() {
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "+=3200",
+          end: "+=2200",
           pin: true,
-          scrub: 1,
+          scrub: 0.8,
           anticipatePin: 1,
           invalidateOnRefresh: true
         }
       })
 
+      // STAGE 1 -> STAGE 2
       tl.to(stage1, {
-        scale: 2.3,
+        scale: 1.04,
         y: -35,
         opacity: 0,
-        ease: "power1.inOut",
-        duration: 1.2
+        pointerEvents: "none",
+        ease: "power2.inOut",
+        duration: 1.0
       }, 0)
 
       if (canvasContainer) {
         tl.to(canvasContainer, {
-          scale: 1.15,
-          opacity: 0.28,
-          filter: "blur(2px)",
+          scale: 1.1,
+          opacity: 0.3,
           ease: "power1.inOut",
-          duration: 1.2
+          duration: 1.0
         }, 0)
       }
 
       tl.fromTo(stage2,
         {
-          scale: 0.82,
-          y: 45,
+          scale: 0.95,
+          y: 35,
           opacity: 0,
           pointerEvents: "none"
         },
@@ -100,44 +100,41 @@ export default function Education() {
           y: 0,
           opacity: 1,
           pointerEvents: "auto",
-          ease: "power1.out",
-          duration: 1.0
+          ease: "power2.out",
+          duration: 0.9
         },
-        0.5
+        0.7
       )
 
       // Dwell period for SMK 5
       tl.to(stage2, {
-        scale: 1.02,
-        duration: 1.0
-      }, 1.5)
+        scale: 1.01,
+        duration: 0.8
+      }, 1.6)
 
-      // =======================================================
-      // TRANSITION 2: Zoom through SMK 5 -> Reveal SMP 2
-      // =======================================================
+      // STAGE 2 -> STAGE 3
       tl.to(stage2, {
-        scale: 2.3,
+        scale: 1.04,
         y: -35,
         opacity: 0,
         pointerEvents: "none",
-        ease: "power1.inOut",
-        duration: 1.2
-      }, 2.5)
+        ease: "power2.inOut",
+        duration: 0.9
+      }, 2.4)
 
       if (canvasContainer) {
         tl.to(canvasContainer, {
-          scale: 1.28,
-          opacity: 0.22,
-          filter: "blur(3px)",
+          scale: 1.18,
+          opacity: 0.25,
           ease: "power1.inOut",
-          duration: 1.2
-        }, 2.5)
+          duration: 0.9
+        }, 2.4)
       }
 
       tl.fromTo(stage3,
         {
-          scale: 0.82,
-          y: 45,
+          scale: 0.95,
+          y: 35,
           opacity: 0,
           pointerEvents: "none"
         },
@@ -146,17 +143,17 @@ export default function Education() {
           y: 0,
           opacity: 1,
           pointerEvents: "auto",
-          ease: "power1.out",
-          duration: 1.0
+          ease: "power2.out",
+          duration: 0.9
         },
-        3.0
+        2.9
       )
 
       // Dwell period for SMP 2
       tl.to(stage3, {
-        scale: 1.02,
-        duration: 1.0
-      }, 4.0)
+        scale: 1.01,
+        duration: 0.8
+      }, 3.8)
 
     }, section)
 

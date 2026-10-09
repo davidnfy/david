@@ -35,23 +35,6 @@ export default function Hero() {
         delay: 0.2
       }
     )
-
-    // Scroll exit animation for entire section
-    const section = sectionRef.current
-    if (section) {
-      gsap.to(section.querySelectorAll(".hero-animate"), {
-        opacity: 0,
-        y: -50,
-        stagger: 0.05,
-        ease: "power2.in",
-        scrollTrigger: {
-          trigger: section,
-          start: "bottom 90%",
-          end: "bottom 20%",
-          scrub: 0.5,
-        }
-      })
-    }
   }, [])
 
   return (

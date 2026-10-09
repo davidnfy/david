@@ -3,6 +3,10 @@ import { ArrowUpRight, Mail, Copy, Check, MessageSquare, Globe } from "lucide-re
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import anime from "animejs"
+import ScaleInTitle from "./fx/ScaleInTitle"
+import ParallaxSticker from "./fx/ParallaxSticker"
+import RollText from "./fx/RollText"
+import PressButton from "./fx/PressButton"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -104,6 +108,16 @@ export default function Contact() {
     >
       <div className="absolute inset-0 tech-dot-grid opacity-30 pointer-events-none" />
 
+      {/* Floating Badges */}
+      <ParallaxSticker
+        variant="azure"
+        from={{ y: -30, rotate: 6 }}
+        to={{ y: 40, rotate: -6 }}
+        className="top-12 right-12 hidden sm:block"
+      >
+        ✦ 05 // CONNECT
+      </ParallaxSticker>
+
       {/* Contact Layout */}
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start relative z-10">
         
@@ -114,32 +128,38 @@ export default function Contact() {
               <MessageSquare size={16} />
               <span>05 // INITIATE CONTACT</span>
             </div>
-            <h2 className="text-4xl xs:text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[#291B48] uppercase leading-[0.9]">
+            <ScaleInTitle
+              as="h2"
+              from={1.6}
+              origin="left center"
+              className="text-4xl xs:text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[#291B48] uppercase leading-[0.9]"
+            >
               LET'S <br />
               <span className="text-[#5E87B6]">COLLABORATE.</span>
-            </h2>
+            </ScaleInTitle>
           </div>
 
           <p className="max-w-lg text-base sm:text-lg text-[#291B48]/75 font-normal leading-relaxed">
             Interested in building next-generation 3D spatial web apps or robust full-stack software systems? Drop me a direct message.
           </p>
 
-          {/* Email */}
+          {/* Email Actions */}
           <div className="pt-2 flex flex-wrap items-center gap-4">
-            <a
+            <PressButton
               href="mailto:davidnafisy3@gmail.com"
-              className="text-base xs:text-xl sm:text-2xl font-black text-[#291B48] hover:text-[#5E87B6] transition-colors underline decoration-2 underline-offset-8 break-all sm:break-normal"
+              variant="plum"
+              icon={<ArrowUpRight size={16} />}
             >
-              davidnafisy3@gmail.com
-            </a>
+              SEND AN EMAIL
+            </PressButton>
 
             <button
               onClick={handleCopyEmail}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#9FB2C8] bg-[#D5CCCD] text-xs font-bold text-[#291B48] hover:border-[#291B48] transition-colors cursor-pointer"
-              title="Copy Email"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full border-2 border-[#291B48] bg-[#D5CCCD] text-xs font-black tracking-wider text-[#291B48] hover:bg-[#291B48] hover:text-[#D5CCCD] transition-all cursor-pointer shadow-[3px_3px_0_0_#291B48] active:translate-x-0.5 active:translate-y-0.5"
+              title="Copy Email Address"
             >
               {copied ? <Check size={14} className="text-[#5E87B6]" /> : <Copy size={14} />}
-              <span>{copied ? "COPIED" : "COPY"}</span>
+              <span>{copied ? "COPIED TO CLIPBOARD" : "COPY EMAIL"}</span>
             </button>
           </div>
         </div>
@@ -175,7 +195,7 @@ export default function Contact() {
                     {social.label}
                   </span>
                   <p className="text-sm font-bold text-[#291B48] group-hover:text-[#5E87B6] transition-colors">
-                    {social.username}
+                    <RollText>{social.username}</RollText>
                   </p>
                 </div>
 
