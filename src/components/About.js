@@ -429,15 +429,15 @@ export default function About() {
                 items={spiralImages}
                 animationMode="all"
                 speed={0.55}
-                radius={175}
+                radius={230}
                 cardWidth={165}
                 cardHeight={165}
-                verticalSpacing={48}
+                verticalSpacing={75}
                 perspective={1200}
                 cardRadius={16}
                 centerScale={1.12}
                 edgeBlur={0}
-                cardsPerTurn={5.2}
+                cardsPerTurn={6}
                 pauseOnHover
               />
             </div>
