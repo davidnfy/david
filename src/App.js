@@ -25,14 +25,17 @@ export default function App() {
 
   // Initialize Lenis buttery-smooth scrolling with GSAP ScrollTrigger sync
   useEffect(() => {
+    const isTouch = typeof window !== "undefined" && (window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window)
+
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: isTouch ? 0.8 : 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 0.95,
-      touchMultiplier: 1.2,
+      touchMultiplier: isTouch ? 0 : 1.2,
+      syncTouch: false,
       infinite: false,
     })
 
@@ -50,7 +53,7 @@ export default function App() {
     }
 
     gsap.ticker.add(updateTicker)
-    gsap.ticker.lagSmoothing(0)
+    gsap.ticker.lagSmoothing(500, 33)
 
     const handleAnchorClick = (e) => {
       const target = e.target.closest("a")

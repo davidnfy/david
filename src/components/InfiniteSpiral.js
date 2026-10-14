@@ -57,7 +57,6 @@ const InfiniteSpiral = ({
     const root = rootRef.current;
     if (!root || normalizedItems.length === 0) return;
 
-    let frameId;
     let previousTime = performance.now();
     let bounds = root.getBoundingClientRect();
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -70,11 +69,36 @@ const InfiniteSpiral = ({
     });
     resizeObserver.observe(root);
 
+    let frameId = null;
+    let isRunning = false;
+    let firstRender = true;
+
+    const startLoop = () => {
+      if (isRunning) return;
+      isRunning = true;
+      previousTime = performance.now();
+      frameId = requestAnimationFrame(render);
+    };
+
+    const stopLoop = () => {
+      if (!isRunning) return;
+      isRunning = false;
+      if (frameId) {
+        cancelAnimationFrame(frameId);
+        frameId = null;
+      }
+    };
+
     const intersectionObserver = new IntersectionObserver(
       ([entry]) => {
         visibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          startLoop();
+        } else {
+          stopLoop();
+        }
       },
-      { threshold: 0.02 }
+      { threshold: 0.01 }
     );
     intersectionObserver.observe(root);
 
@@ -88,10 +112,16 @@ const InfiniteSpiral = ({
         -1.5,
         1.5
       );
+      if (!isRunning) startLoop();
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     const render = time => {
+      if (!visibleRef.current) {
+        stopLoop();
+        return;
+      }
+
       const delta = Math.min((time - previousTime) / 1000, 0.05);
       previousTime = time;
 
@@ -107,48 +137,56 @@ const InfiniteSpiral = ({
       targetProgressRef.current += autoSpeedRef.current * delta;
 
       const followBlend = 1 - Math.exp(-delta * (draggingRef.current ? 22 : 11));
+      const prevProgress = progressRef.current;
       progressRef.current += (targetProgressRef.current - progressRef.current) * followBlend;
 
-      const count = normalizedItems.length;
-      const half = count / 2;
-      const width = Math.max(bounds.width, 1);
-      const height = Math.max(bounds.height, 1);
-      const fit = Math.max(0.85, Math.min(1.0, width / (cardWidth * 2.2)));
-      const responsiveRadius = Math.min(radius, Math.max(70, width * 0.35));
-      const fadeStart = clamp(1 - edgeFade, 0, 0.98);
-      const turnSize = Math.max(cardsPerTurn, 1);
+      const progressDiff = Math.abs(progressRef.current - prevProgress);
+      const isProgressChanging = progressDiff > 0.00005 || Math.abs(autoSpeedRef.current) > 0.0001 || draggingRef.current;
 
-      cardRefs.current.forEach((card, index) => {
-        if (!card) return;
-        let offset = index - progressRef.current;
-        offset = modulo(offset + half, count) - half;
+      if (isProgressChanging || firstRender) {
+        firstRender = false;
+        const count = normalizedItems.length;
+        const half = count / 2;
+        const width = Math.max(bounds.width, 1);
+        const fit = Math.max(0.85, Math.min(1.0, width / (cardWidth * 2.2)));
+        const responsiveRadius = Math.min(radius, Math.max(70, width * 0.35));
+        const fadeStart = clamp(1 - edgeFade, 0, 0.98);
+        const turnSize = Math.max(cardsPerTurn, 1);
 
-        const edge = Math.min(Math.abs(offset) / Math.max(half, 1), 1);
-        const opacity = 1 - smoothstep(fadeStart, 1, edge);
-        const focus = 1 - Math.min(Math.abs(offset) / Math.max(turnSize * 0.65, 1), 1);
-        const scale = (1 + (centerScale - 1) * focus) * fit;
-        const angle = offset * (360 / turnSize) + rotation;
-        const angleRadians = (angle * Math.PI) / 180;
-        const x = Math.sin(angleRadians) * responsiveRadius;
-        const z = Math.cos(angleRadians) * responsiveRadius;
-        const depthScale = clamp(perspective / Math.max(perspective - z, 1), 0.8, 1.2);
-        const visualScale = scale * depthScale;
-        const depth = (z / Math.max(responsiveRadius, 1) + 1) / 2;
-        const blur = edgeBlur * smoothstep(0.35, 1, edge);
-        card.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${offset * verticalSpacing}px, 0) rotateZ(${cardTilt}deg) scale(${visualScale})`;
-        card.style.opacity = opacity.toFixed(3);
-        card.style.filter = blur > 0.01 ? `blur(${blur.toFixed(2)}px)` : 'none';
-        card.style.zIndex = String(Math.round(depth * 100000) + index);
-        card.style.pointerEvents = opacity > 0.25 ? 'auto' : 'none';
-      });
+        cardRefs.current.forEach((card, index) => {
+          if (!card) return;
+          let offset = index - progressRef.current;
+          offset = modulo(offset + half, count) - half;
+
+          const edge = Math.min(Math.abs(offset) / Math.max(half, 1), 1);
+          const opacity = 1 - smoothstep(fadeStart, 1, edge);
+          const focus = 1 - Math.min(Math.abs(offset) / Math.max(turnSize * 0.65, 1), 1);
+          const scale = (1 + (centerScale - 1) * focus) * fit;
+          const angle = offset * (360 / turnSize) + rotation;
+          const angleRadians = (angle * Math.PI) / 180;
+          const x = Math.sin(angleRadians) * responsiveRadius;
+          const z = Math.cos(angleRadians) * responsiveRadius;
+          const depthScale = clamp(perspective / Math.max(perspective - z, 1), 0.8, 1.2);
+          const visualScale = scale * depthScale;
+          const depth = (z / Math.max(responsiveRadius, 1) + 1) / 2;
+          const blur = edgeBlur * smoothstep(0.35, 1, edge);
+          card.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${offset * verticalSpacing}px), 0) rotateZ(${cardTilt}deg) scale(${visualScale})`;
+          card.style.opacity = opacity.toFixed(3);
+          if (edgeBlur > 0) {
+            card.style.filter = blur > 0.01 ? `blur(${blur.toFixed(1)}px)` : 'none';
+          }
+          card.style.zIndex = String(Math.round(depth * 100000) + index);
+          card.style.pointerEvents = opacity > 0.25 ? 'auto' : 'none';
+        });
+      }
 
       frameId = requestAnimationFrame(render);
     };
 
-    frameId = requestAnimationFrame(render);
+    startLoop();
 
     return () => {
-      cancelAnimationFrame(frameId);
+      stopLoop();
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       window.removeEventListener('scroll', handleScroll);

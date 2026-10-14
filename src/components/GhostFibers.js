@@ -59,7 +59,7 @@ uniform float uUseCustomBackdrop;
 
 out vec4 fragColor;
 
-#define MAX_LAYERS 10
+#define MAX_LAYERS 6
 
 mat2 rotate2d(float angle) {
   float sine = sin(angle);
@@ -74,15 +74,10 @@ float grainHash(vec2 point) {
 }
 
 float layeredGrain(vec2 fragmentPixel) {
-  vec2 point = mod(fragmentPixel + vec2(uTime * 30.0, -uTime * 21.0), 1024.0);
+  if (uGrain <= 0.001) return 0.0;
+  vec2 point = mod(fragmentPixel + vec2(uTime * 24.0, -uTime * 18.0), 512.0);
   vec2 rotated = mat2(0.8, -0.5, 0.5, 0.8) * point;
-  float grain = 0.0;
-  grain += 0.40 * grainHash(rotated);
-  grain += 0.25 * grainHash(rotated * 2.0 + 17.0);
-  grain += 0.20 * grainHash(rotated * 4.0 + 47.0);
-  grain += 0.10 * grainHash(rotated * 8.0 + 113.0);
-  grain += 0.05 * grainHash(rotated * 16.0 + 191.0);
-  return grain;
+  return 0.65 * grainHash(rotated) + 0.35 * grainHash(rotated * 2.0 + 17.0);
 }
 
 void main() {
@@ -295,7 +290,10 @@ const GhostFibers = ({
 
     const setSize = () => {
       const rect = container.getBoundingClientRect();
-      renderer.setSize(Math.max(1, Math.floor(rect.width)), Math.max(1, Math.floor(rect.height)));
+      const pixelRatio = Math.min(Math.max(dpr || 1, 0.5), 1.0);
+      renderer.setSize(Math.max(1, Math.floor(rect.width * pixelRatio)), Math.max(1, Math.floor(rect.height * pixelRatio)));
+      gl.canvas.style.width = "100%";
+      gl.canvas.style.height = "100%";
       program.uniforms.uResolution.value[0] = gl.drawingBufferWidth;
       program.uniforms.uResolution.value[1] = gl.drawingBufferHeight;
       render();

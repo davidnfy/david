@@ -43,18 +43,18 @@ export default function Hero() {
       ref={sectionRef}
       className="relative w-full min-h-screen flex flex-col justify-between px-5 sm:px-12 md:px-16 lg:px-20 xl:px-28 pt-24 sm:pt-28 pb-10 sm:pb-12 overflow-hidden bg-[#D5CCCD] text-[#291B48] select-none"
     >
-      {/* Dynamic Animated Background: GhostFibers with gentle blur */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0, filter: "blur(1.5px)" }}>
+      {/* Dynamic Animated Background: GhostFibers */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         <GhostFibers
           lineColor="#291B48"
           glowColor="#5E87B6"
           backdropColor="#D5CCCD"
           lightMode={true}
-          speed={0.2}
+          speed={0.18}
           scale={1.4}
           rotation={0}
-          rotationSpeed={0.25}
-          layers={4}
+          rotationSpeed={0.2}
+          layers={3}
           waveAmplitude={0.015}
           waveFrequency={3}
           waveSpeed={0.15}
@@ -66,11 +66,11 @@ export default function Hero() {
           lineSpacing={2}
           lineSharpness={16}
           glowFalloff={10}
-          glowIntensity={1.6}
+          glowIntensity={1.5}
           brightness={2}
           blueBoost={1.25}
           vignette={0.4}
-          grain={0.04}
+          grain={0.015}
           dpr={1}
           className="w-full h-full"
         />
@@ -163,8 +163,8 @@ export default function Hero() {
             handle="davidnfy"
             status="dn"
             contactText="Contact Me"
-            avatarUrl="/img/3.png"
-            miniAvatarUrl="/img/david1.png"
+            avatarUrl="/img/3.webp"
+            miniAvatarUrl="/img/david1.webp"
             showUserInfo={true}
             enableTilt={true}
             enableMobileTilt={false}

@@ -10,13 +10,13 @@ import InfiniteSpiral from "./InfiniteSpiral"
 gsap.registerPlugin(ScrollTrigger)
 
 const spiralImages = [
-  { src: "/img/1.png", label: "Personal", objectPosition: "54% 38%" },
-  { src: "/img/2.png", label: "Personal", objectPosition: "50% 50%" },
-  { src: "/img/3.png", label: "Personal", objectPosition: "72% 68%" },
-  { src: "/img/4.png", label: "Personal", objectPosition: "48% 75%" },
-  { src: "/img/5.png", label: "Personal", objectPosition: "32% 82%" },
-  { src: "/img/6.png", label: "Personal", objectPosition: "50% 46%" },
-  { src: "/img/7.png", label: "Personal", objectPosition: "68% 72%" }
+  { src: "/img/1.webp", label: "Personal", objectPosition: "54% 38%" },
+  { src: "/img/2.webp", label: "Personal", objectPosition: "50% 50%" },
+  { src: "/img/3.webp", label: "Personal", objectPosition: "72% 68%" },
+  { src: "/img/4.webp", label: "Personal", objectPosition: "48% 75%" },
+  { src: "/img/5.webp", label: "Personal", objectPosition: "32% 82%" },
+  { src: "/img/6.webp", label: "Personal", objectPosition: "50% 46%" },
+  { src: "/img/7.webp", label: "Personal", objectPosition: "68% 72%" }
 ]
 
 

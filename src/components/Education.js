@@ -223,9 +223,11 @@ export default function Education() {
           {/* School Logo */}
           <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#D5CCCD] border-2 border-[#5E87B6] p-3 shadow-md flex items-center justify-center">
             <img
-              src="/img/smk.png"
+              src="/img/smk.webp"
               alt="SMK Negeri 5 Malang"
               className="w-full h-full object-contain"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -296,9 +298,11 @@ export default function Education() {
           {/* School Logo */}
           <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#D5CCCD] border-2 border-[#9FB2C8] p-3 shadow-md flex items-center justify-center">
             <img
-              src="/img/smp.png"
+              src="/img/smp.webp"
               alt="SMP Negeri 2 Dampit"
               className="w-full h-full object-contain"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 

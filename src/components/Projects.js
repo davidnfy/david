@@ -25,7 +25,7 @@ export default function Projects() {
       num: "01",
       title: "Church Management System",
       description: "Church attendance, member tracking, and service management system with relational database architecture.",
-      image: "/img/absen-gereja.png",
+      image: "/img/absen-gereja.webp",
       githubUrl: "https://github.com/davidnfy/absen-gereja",
     },
     {
@@ -34,7 +34,7 @@ export default function Projects() {
       title: "Pawtify",
       year: "2024",
       description: "Pet management application for animal health logs, schedules, and vaccination records.",
-      image: "/img/pawtify.png",
+      image: "/img/pawtify.webp",
       githubUrl: "https://github.com/davidnfy/animals-organizer-data",
     },
     {
@@ -43,7 +43,7 @@ export default function Projects() {
       title: "Dompetku",
       year: "2024",
       description: "Personal finance and expense tracker featuring transaction history and cashflow insights.",
-      image: "/img/dompetku.png",
+      image: "/img/dompetku.webp",
       githubUrl: "https://github.com/davidnfy/DompetKu",
     },
     {
@@ -52,7 +52,7 @@ export default function Projects() {
       title: "Todo List Pro",
       year: "2023",
       description: "Task manager with local state persistence, prioritized scheduling, and intuitive filtering.",
-      image: "/img/todo-list.png",
+      image: "/img/todo-list.webp",
       githubUrl: "https://github.com/davidnfy/todo-list-app",
     },
     {
@@ -60,7 +60,7 @@ export default function Projects() {
       num: "05",
       title: "Website Profile Showcase",
       description: "Personal digital portfolio emphasizing spatial design, 3D interactions, and minimalist aesthetics.",
-      image: "/img/profile-web.png",
+      image: "/img/profile-web.webp",
       githubUrl: "https://github.com/davidnfy/davidnafisy",
     },
     {
@@ -68,7 +68,7 @@ export default function Projects() {
       num: "06",
       title: "Karang Taruna Kota Batu",
       description: "website to manage members, news, and activities for the batu city youth organization (Karang Taruna).",
-      image: "/img/kartar.png",
+      image: "/img/kartar.webp",
       githubUrl: "https://kartar.batu.city"
     }
   ]
@@ -268,6 +268,7 @@ export default function Projects() {
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
+                  decoding="async"
                 />
 
                 <a
