@@ -34,9 +34,9 @@ export default function ThreeCanvas3D({ className = "" }) {
     const group = new THREE.Group()
     scene.add(group)
 
-    const COLOR_PLUM = 0x291B48
-    const COLOR_AZURE = 0x5E87B6
-    const COLOR_CLOUD = 0x9FB2C8
+    const COLOR_PLUM = 0x1F1F1F
+    const COLOR_AZURE = 0x29ABE2
+    const COLOR_CLOUD = 0x0054A6
 
     // 1. Central Icosahedron - Deep Plum
     const icoGeometry = new THREE.IcosahedronGeometry(1.8, 1)

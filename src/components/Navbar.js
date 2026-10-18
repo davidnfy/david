@@ -121,20 +121,20 @@ export default function Navbar() {
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="cursor-pointer bg-[#D5CCCD]/95 backdrop-blur-md px-4 py-2 rounded-full border border-[#9FB2C8] shadow-xs flex items-center gap-2 select-none"
+                className="cursor-pointer bg-[#FFFFFF]/95 backdrop-blur-md px-4 py-2 rounded-full border border-[#0054A6] shadow-xs flex items-center gap-2 select-none"
               >
-                <div className="w-2.5 h-2.5 rounded-full bg-[#5E87B6]" />
-                <div className="text-sm font-black tracking-tight flex items-center text-[#291B48]">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#29ABE2]" />
+                <div className="text-sm font-black tracking-tight flex items-center text-[#1F1F1F]">
                   <span className="nav-logo-char inline-block">d</span>
                   <span className="nav-logo-char inline-block">n</span>
                   <span className="nav-logo-char inline-block">f</span>
                   <span className="nav-logo-char inline-block">y</span>
-                  <span className="nav-logo-char inline-block text-[#5E87B6]">.</span>
+                  <span className="nav-logo-char inline-block text-[#29ABE2]">.</span>
                 </div>
               </motion.div>
 
               {/* Desktop Navigation (Visible on md and above) */}
-              <nav className="hidden md:flex items-center gap-1 bg-[#D5CCCD]/95 backdrop-blur-md px-2 py-1.5 rounded-full border border-[#9FB2C8] shadow-xs">
+              <nav className="hidden md:flex items-center gap-1 bg-[#FFFFFF]/95 backdrop-blur-md px-2 py-1.5 rounded-full border border-[#0054A6] shadow-xs">
                 {navItems.map((item) => {
                   const isActive = activeSection === item.id
                   return (
@@ -144,14 +144,14 @@ export default function Navbar() {
                       onClick={(e) => handleLinkClick(e, item.id)}
                       className={`relative px-3.5 py-1 text-xs font-bold tracking-wider uppercase transition-colors duration-200 rounded-full select-none whitespace-nowrap ${
                         isActive
-                          ? "text-[#D5CCCD]"
-                          : "text-[#291B48]/70 hover:text-[#291B48]"
+                          ? "text-[#FFFFFF]"
+                          : "text-[#1F1F1F]/70 hover:text-[#1F1F1F]"
                       }`}
                     >
                       {isActive && (
                         <motion.div
                           layoutId="activeNavIndicator"
-                          className="absolute inset-0 bg-[#291B48] rounded-full -z-10"
+                          className="absolute inset-0 bg-[#1F1F1F] rounded-full -z-10"
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
@@ -164,22 +164,22 @@ export default function Navbar() {
               {/* Mobile Hamburger Button (Top Right Corner - Only on Mobile) */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-[#D5CCCD]/95 backdrop-blur-md border border-[#9FB2C8] text-[#291B48] hover:border-[#5E87B6] active:scale-95 transition-all shadow-xs"
+                className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-[#FFFFFF]/95 backdrop-blur-md border border-[#0054A6] text-[#1F1F1F] hover:border-[#29ABE2] active:scale-95 transition-all shadow-xs"
                 aria-label="Toggle navigation menu"
               >
                 <div className="w-5 h-3.5 flex flex-col justify-between items-end">
                   <span
-                    className={`h-0.5 bg-[#291B48] rounded-full transition-all duration-300 ${
+                    className={`h-0.5 bg-[#1F1F1F] rounded-full transition-all duration-300 ${
                       isOpen ? "w-5 translate-y-[6px] rotate-45" : "w-5"
                     }`}
                   />
                   <span
-                    className={`h-0.5 bg-[#291B48] rounded-full transition-all duration-200 ${
+                    className={`h-0.5 bg-[#1F1F1F] rounded-full transition-all duration-200 ${
                       isOpen ? "opacity-0 translate-x-2" : "w-3.5"
                     }`}
                   />
                   <span
-                    className={`h-0.5 bg-[#291B48] rounded-full transition-all duration-300 ${
+                    className={`h-0.5 bg-[#1F1F1F] rounded-full transition-all duration-300 ${
                       isOpen ? "w-5 -translate-y-[6px] -rotate-45" : "w-4"
                     }`}
                   />
@@ -203,7 +203,7 @@ export default function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-[#291B48]/60 backdrop-blur-sm z-[60] md:hidden"
+              className="fixed inset-0 bg-[#1F1F1F]/60 backdrop-blur-sm z-[60] md:hidden"
             />
 
             {/* Sliding Drawer Panel from Right to Center */}
@@ -213,19 +213,19 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 260 }}
-              className="fixed top-0 right-0 bottom-0 w-full sm:w-[85vw] sm:max-w-md bg-[#291B48] text-[#D5CCCD] z-[70] flex flex-col justify-between p-6 sm:p-8 shadow-2xl border-l border-[#9FB2C8]/20 md:hidden overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-full sm:w-[85vw] sm:max-w-md bg-[#1F1F1F] text-[#FFFFFF] z-[70] flex flex-col justify-between p-6 sm:p-8 shadow-2xl border-l border-[#0054A6]/20 md:hidden overflow-y-auto"
             >
               {/* Drawer Top Bar */}
-              <div className="flex items-center justify-between pb-6 border-b border-[#9FB2C8]/20">
+              <div className="flex items-center justify-between pb-6 border-b border-[#0054A6]/20">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-[#5E87B6] animate-pulse" />
-                  <span className="text-xs font-mono font-bold tracking-widest text-[#9FB2C8] uppercase">
+                  <div className="w-2 h-2 rounded-full bg-[#29ABE2] animate-pulse" />
+                  <span className="text-xs font-mono font-bold tracking-widest text-[#0054A6] uppercase">
                     NAVIGATION // 01-05
                   </span>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="w-9 h-9 rounded-full border border-[#9FB2C8]/30 flex items-center justify-center text-[#D5CCCD] hover:text-[#5E87B6] hover:border-[#5E87B6] active:scale-95 transition-all"
+                  className="w-9 h-9 rounded-full border border-[#0054A6]/30 flex items-center justify-center text-[#FFFFFF] hover:text-[#29ABE2] hover:border-[#29ABE2] active:scale-95 transition-all"
                   aria-label="Close menu"
                 >
                   <X size={18} />
@@ -246,17 +246,17 @@ export default function Navbar() {
                       <a
                         href={item.href}
                         onClick={(e) => handleLinkClick(e, item.id)}
-                        className="group flex items-center justify-between py-3 border-b border-[#9FB2C8]/10 hover:border-[#5E87B6]/40 transition-colors"
+                        className="group flex items-center justify-between py-3 border-b border-[#0054A6]/10 hover:border-[#29ABE2]/40 transition-colors"
                       >
                         <div className="flex items-baseline gap-3">
-                          <span className="text-xs font-mono font-bold text-[#5E87B6]">
+                          <span className="text-xs font-mono font-bold text-[#29ABE2]">
                             0{idx + 1}
                           </span>
                           <span
                             className={`text-2xl sm:text-3xl font-black tracking-tight uppercase transition-all duration-200 ${
                               isActive
-                                ? "text-[#5E87B6] translate-x-1"
-                                : "text-[#D5CCCD] group-hover:text-[#5E87B6] group-hover:translate-x-1.5"
+                                ? "text-[#29ABE2] translate-x-1"
+                                : "text-[#FFFFFF] group-hover:text-[#29ABE2] group-hover:translate-x-1.5"
                             }`}
                           >
                             {item.name}
@@ -266,8 +266,8 @@ export default function Navbar() {
                           size={18}
                           className={`transition-all duration-200 ${
                             isActive
-                              ? "text-[#5E87B6] opacity-100"
-                              : "text-[#9FB2C8]/40 opacity-50 group-hover:opacity-100 group-hover:text-[#5E87B6] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                              ? "text-[#29ABE2] opacity-100"
+                              : "text-[#0054A6]/40 opacity-50 group-hover:opacity-100 group-hover:text-[#29ABE2] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                           }`}
                         />
                       </a>
@@ -277,24 +277,24 @@ export default function Navbar() {
               </nav>
 
               {/* Drawer Footer (Editorial Info & Socials) */}
-              <div className="pt-6 border-t border-[#9FB2C8]/20 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-[#9FB2C8]">
+              <div className="pt-6 border-t border-[#0054A6]/20 space-y-3">
+                <div className="flex items-center justify-between text-xs font-mono text-[#0054A6]">
                   <span>LOCATION</span>
-                  <span className="text-[#D5CCCD]">MALANG, INDONESIA</span>
+                  <span className="text-[#FFFFFF]">MALANG, INDONESIA</span>
                 </div>
-                <div className="flex items-center justify-between text-xs font-mono text-[#9FB2C8]">
+                <div className="flex items-center justify-between text-xs font-mono text-[#0054A6]">
                   <span>STATUS</span>
-                  <span className="text-[#5E87B6] flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#5E87B6] animate-pulse" />
+                  <span className="text-[#29ABE2] flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] animate-pulse" />
                     OPEN FOR ROLES
                   </span>
                 </div>
-                <div className="pt-2 flex items-center gap-3 text-xs font-mono font-bold text-[#9FB2C8]">
+                <div className="pt-2 flex items-center gap-3 text-xs font-mono font-bold text-[#0054A6]">
                   <a
                     href="https://github.com/davidnfy"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-[#5E87B6] transition-colors"
+                    className="hover:text-[#29ABE2] transition-colors"
                   >
                     GITHUB
                   </a>
@@ -303,14 +303,14 @@ export default function Navbar() {
                     href="https://linkedin.com/in/davidnafisy"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-[#5E87B6] transition-colors"
+                    className="hover:text-[#29ABE2] transition-colors"
                   >
                     LINKEDIN
                   </a>
                   <span>/</span>
                   <a
                     href="mailto:davidnafisy@gmail.com"
-                    className="hover:text-[#5E87B6] transition-colors"
+                    className="hover:text-[#29ABE2] transition-colors"
                   >
                     EMAIL
                   </a>

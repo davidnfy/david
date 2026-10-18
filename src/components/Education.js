@@ -164,7 +164,7 @@ export default function Education() {
     <section
       id="education"
       ref={sectionRef}
-      className="relative w-full h-screen flex items-center justify-center bg-[#D5CCCD] text-[#291B48] border-t border-[#9FB2C8] overflow-hidden select-none"
+      className="relative w-full h-screen flex items-center justify-center bg-[#FFFFFF] text-[#1F1F1F] border-t border-[#0054A6] overflow-hidden select-none"
     >
       {/* Background Subtle Tech Dot Grid */}
       <div className="absolute inset-0 tech-dot-grid opacity-30 pointer-events-none" />
@@ -178,9 +178,6 @@ export default function Education() {
         <AcademicCanvas3D className="w-full h-full" />
       </div>
 
-      {/* ======================================================== */}
-      {/* STAGE 1: Monumental Academic Overview                     */}
-      {/* ======================================================== */}
       <div
         ref={stage1Ref}
         className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-20 pointer-events-none"
@@ -188,24 +185,24 @@ export default function Education() {
       >
         <div className="space-y-4 max-w-4xl mx-auto px-4">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#9FB2C8] bg-[#D5CCCD]/90 backdrop-blur-xs text-xs font-bold tracking-[0.25em] text-[#5E87B6] uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0054A6] bg-[#FFFFFF]/90 backdrop-blur-xs text-xs font-bold tracking-[0.25em] text-[#29ABE2] uppercase">
             <GraduationCap size={16} />
             <span>MY JOURNEY</span>
           </div>
 
           {/* Monumental Headline */}
-          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-black tracking-normal leading-tight text-[#291B48] uppercase max-w-full drop-shadow-xs">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-black tracking-normal leading-tight text-[#1F1F1F] uppercase max-w-full drop-shadow-xs">
             ACADEMIC
           </h2>
 
           {/* Latin Editorial Subtitle */}
-          <p className="text-lg sm:text-xl md:text-2xl font-latin italic text-[#291B48]/90 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl font-latin italic text-[#1F1F1F]/90 max-w-2xl mx-auto">
             Formative Milestones & Engineering Roots
           </p>
         </div>
 
         {/* Scroll Prompt */}
-        <div className="absolute bottom-12 flex flex-col items-center gap-2 text-xs font-bold tracking-widest text-[#5E87B6] uppercase">
+        <div className="absolute bottom-12 flex flex-col items-center gap-2 text-xs font-bold tracking-widest text-[#29ABE2] uppercase">
           <span>SCROLL TO PASS THROUGH</span>
           <ChevronDown size={18} className="animate-bounce" />
         </div>
@@ -221,7 +218,7 @@ export default function Education() {
       >
         <div className="max-w-3xl w-full mx-auto space-y-6 flex flex-col items-center text-center">
           {/* School Logo */}
-          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#D5CCCD] border-2 border-[#5E87B6] p-3 shadow-md flex items-center justify-center">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#FFFFFF] border-2 border-[#29ABE2] p-3 shadow-md flex items-center justify-center">
             <img
               src="/img/smk.webp"
               alt="SMK Negeri 5 Malang"
@@ -233,35 +230,35 @@ export default function Education() {
 
           {/* Status & Period Pill */}
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="text-xs font-black tracking-widest uppercase text-[#5E87B6] border border-[#5E87B6] px-4 py-1.5 rounded-full bg-[#D5CCCD]">
+            <span className="text-xs font-black tracking-widest uppercase text-[#29ABE2] border border-[#29ABE2] px-4 py-1.5 rounded-full bg-[#FFFFFF]">
               VOCATIONAL HIGH SCHOOL
             </span>
-            <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#5E87B6]/15 border border-[#5E87B6] text-[#291B48] text-xs font-black">
-              <span className="w-2 h-2 rounded-full bg-[#5E87B6] animate-pulse" />
+            <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#29ABE2]/15 border border-[#29ABE2] text-[#1F1F1F] text-xs font-black">
+              <span className="w-2 h-2 rounded-full bg-[#29ABE2] animate-pulse" />
               <span>CURRENTLY ENROLLED</span>
             </div>
           </div>
 
           {/* Monumental School Name */}
           <div className="space-y-2">
-            <h3 className="text-3xl sm:text-5xl md:text-6xl font-display font-black tracking-tight text-[#291B48] uppercase leading-tight drop-shadow-xs">
+            <h3 className="text-3xl sm:text-5xl md:text-6xl font-display font-black tracking-tight text-[#1F1F1F] uppercase leading-tight drop-shadow-xs">
               SMK NEGERI 5 MALANG
             </h3>
             {/* Major in Latin Serif Italic */}
-            <p className="text-xl sm:text-3xl font-latin italic text-[#5E87B6]">
+            <p className="text-xl sm:text-3xl font-latin italic text-[#29ABE2]">
               Vocational High School 5 Malang
             </p>
           </div>
 
           {/* Metadata */}
-          <div className="flex items-center justify-center gap-6 text-xs sm:text-sm font-semibold text-[#291B48]/80">
+          <div className="flex items-center justify-center gap-6 text-xs sm:text-sm font-semibold text-[#1F1F1F]/80">
             <span className="flex items-center gap-1.5">
-              <Calendar size={15} className="text-[#5E87B6]" />
+              <Calendar size={15} className="text-[#29ABE2]" />
               2024 — Present
             </span>
             <span>•</span>
             <span className="flex items-center gap-1.5">
-              <MapPin size={15} className="text-[#5E87B6]" />
+              <MapPin size={15} className="text-[#29ABE2]" />
               Malang, Jawa Timur
             </span>
           </div>
@@ -271,7 +268,7 @@ export default function Education() {
             {["Full-Stack Dev", "Database Architecture", "System Design", "UI/UX Modeling"].map((skill) => (
               <span
                 key={skill}
-                className="px-3.5 py-1 rounded-full border border-[#9FB2C8] bg-[#D5CCCD] text-xs font-bold text-[#291B48] tracking-wider uppercase"
+                className="px-3.5 py-1 rounded-full border border-[#0054A6] bg-[#FFFFFF] text-xs font-bold text-[#1F1F1F] tracking-wider uppercase"
               >
                 {skill}
               </span>
@@ -280,7 +277,7 @@ export default function Education() {
         </div>
 
         {/* Scroll Prompt */}
-        <div className="absolute bottom-10 flex flex-col items-center gap-1 text-[11px] font-bold tracking-widest text-[#5E87B6] uppercase">
+        <div className="absolute bottom-10 flex flex-col items-center gap-1 text-[11px] font-bold tracking-widest text-[#29ABE2] uppercase">
           <span>SCROLL TO ADVANCE TO JUNIOR HIGH</span>
           <ChevronDown size={16} className="animate-bounce" />
         </div>
@@ -296,7 +293,7 @@ export default function Education() {
       >
         <div className="max-w-3xl w-full mx-auto space-y-6 flex flex-col items-center text-center">
           {/* School Logo */}
-          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#D5CCCD] border-2 border-[#9FB2C8] p-3 shadow-md flex items-center justify-center">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#FFFFFF] border-2 border-[#0054A6] p-3 shadow-md flex items-center justify-center">
             <img
               src="/img/smp.webp"
               alt="SMP Negeri 2 Dampit"
@@ -308,34 +305,34 @@ export default function Education() {
 
           {/* Status & Period Pill */}
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="text-xs font-black tracking-widest uppercase text-[#291B48]/80 border border-[#9FB2C8] px-4 py-1.5 rounded-full bg-[#D5CCCD]">
+            <span className="text-xs font-black tracking-widest uppercase text-[#1F1F1F]/80 border border-[#0054A6] px-4 py-1.5 rounded-full bg-[#FFFFFF]">
               JUNIOR HIGH SCHOOL
             </span>
-            <span className="px-4 py-1.5 rounded-full border border-[#9FB2C8] text-[#291B48]/90 text-xs font-black bg-[#D5CCCD]">
+            <span className="px-4 py-1.5 rounded-full border border-[#0054A6] text-[#1F1F1F]/90 text-xs font-black bg-[#FFFFFF]">
               GRADUATED (ALUMNI)
             </span>
           </div>
 
           {/* Monumental School Name */}
           <div className="space-y-2">
-            <h3 className="text-3xl sm:text-5xl md:text-6xl font-display font-black tracking-tight text-[#291B48] uppercase leading-tight drop-shadow-xs">
+            <h3 className="text-3xl sm:text-5xl md:text-6xl font-display font-black tracking-tight text-[#1F1F1F] uppercase leading-tight drop-shadow-xs">
               SMP NEGERI 2 DAMPIT
             </h3>
             {/* Major in Latin Serif Italic */}
-            <p className="text-xl sm:text-3xl font-latin italic text-[#5E87B6]">
+            <p className="text-xl sm:text-3xl font-latin italic text-[#29ABE2]">
               Junior High School 2 Dampit
             </p>
           </div>
 
           {/* Metadata */}
-          <div className="flex items-center justify-center gap-6 text-xs sm:text-sm font-semibold text-[#291B48]/80">
+          <div className="flex items-center justify-center gap-6 text-xs sm:text-sm font-semibold text-[#1F1F1F]/80">
             <span className="flex items-center gap-1.5">
-              <Calendar size={15} className="text-[#5E87B6]" />
+              <Calendar size={15} className="text-[#29ABE2]" />
               2021 — 2024
             </span>
             <span>•</span>
             <span className="flex items-center gap-1.5">
-              <MapPin size={15} className="text-[#5E87B6]" />
+              <MapPin size={15} className="text-[#29ABE2]" />
               Dampit, Malang
             </span>
           </div>
@@ -345,7 +342,7 @@ export default function Education() {
             {["Logic & Mathematics", "SCIENCE & DISCOVERY", "TECHNOLOGY INTERESTS"].map((skill) => (
               <span
                 key={skill}
-                className="px-3.5 py-1 rounded-full border border-[#9FB2C8] bg-[#D5CCCD] text-xs font-bold text-[#291B48] tracking-wider uppercase"
+                className="px-3.5 py-1 rounded-full border border-[#0054A6] bg-[#FFFFFF] text-xs font-bold text-[#1F1F1F] tracking-wider uppercase"
               >
                 {skill}
               </span>

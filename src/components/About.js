@@ -59,12 +59,12 @@ const Typewriter = () => {
   }, [displayText, isDeleting, index, speed, words])
 
   return (
-    <span className="text-[#5E87B6] font-black inline-block">
+    <span className="text-[#29ABE2] font-black inline-block">
       {displayText}
       <motion.span
         animate={{ opacity: [0, 1, 0] }}
         transition={{ repeat: Infinity, duration: 0.8 }}
-        className="inline-block w-1 h-[0.85em] bg-[#5E87B6] ml-1.5 align-middle"
+        className="inline-block w-1 h-[0.85em] bg-[#29ABE2] ml-1.5 align-middle"
       />
     </span>
   )
@@ -226,7 +226,7 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative w-full h-screen bg-[#D5CCCD] text-[#291B48] select-none overflow-hidden"
+      className="relative w-full h-screen bg-[#FFFFFF] text-[#1F1F1F] select-none overflow-hidden"
     >
       {/* Viewport Frame with 3D Perspective */}
       <div
@@ -250,10 +250,10 @@ export default function About() {
 
           {}
           <div className="relative max-w-full px-4">
-            <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-poppins font-black tracking-tight text-[#291B48] uppercase leading-none drop-shadow-xs">
-              DAVID <span className="text-[#5E87B6]">NAFISY</span>
+            <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-poppins font-black tracking-tight text-[#1F1F1F] uppercase leading-none drop-shadow-xs">
+              DAVID <span className="text-[#29ABE2]">NAFISY</span>
             </h2>
-            <div className="text-xs sm:text-sm font-mono font-bold tracking-[0.4em] uppercase text-[#291B48]/60 mt-4">
+            <div className="text-xs sm:text-sm font-mono font-bold tracking-[0.4em] uppercase text-[#1F1F1F]/60 mt-4">
               [ SOFTWARE ENGINEER ]
             </div>
           </div>
@@ -266,14 +266,14 @@ export default function About() {
           style={{ willChange: "transform, opacity", transform: "translateZ(0)", backfaceVisibility: "hidden" }}
         >
           {/* Section Subtitle Bar (Hidden on small mobile to preserve perfect vertical balance) */}
-          <div className="hidden sm:flex items-center justify-between border-b border-[#9FB2C8] pb-3 mb-6 lg:mb-8 shrink-0">
+          <div className="hidden sm:flex items-center justify-between border-b border-[#0054A6] pb-3 mb-6 lg:mb-8 shrink-0">
             <div className="flex items-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#5E87B6]" />
-              <h3 className="text-xs sm:text-sm font-black uppercase tracking-[0.3em] text-[#291B48]">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#29ABE2]" />
+              <h3 className="text-xs sm:text-sm font-black uppercase tracking-[0.3em] text-[#1F1F1F]">
                 SPATIAL IDENTITY // DAVID NAFISY
               </h3>
             </div>
-            <div className="text-xs font-mono font-bold text-[#5E87B6] uppercase tracking-widest">
+            <div className="text-xs font-mono font-bold text-[#29ABE2] uppercase tracking-widest">
               MINIMALIST ARCHITECTURE
             </div>
           </div>
@@ -283,13 +283,13 @@ export default function About() {
             
             {/* Left Column: Narrative & Typewriter (Col 7) */}
             <div className="lg:col-span-7 space-y-4 lg:space-y-6">
-              <h4 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black tracking-tight text-[#291B48] leading-tight">
+              <h4 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black tracking-tight text-[#1F1F1F] leading-tight">
                 I am a <br />
                 <Typewriter />
               </h4>
 
-              <p className="text-sm sm:text-base text-[#291B48]/85 font-sans leading-relaxed pt-2">
-                Vocational student at <strong className="text-[#291B48] font-black">SMK Negeri 5 Malang</strong>. I build full-stack web applications and interactive digital experiences, focusing on clean design, solid performance, and thoughtful user interactions.
+              <p className="text-sm sm:text-base text-[#1F1F1F]/85 font-sans leading-relaxed pt-2">
+                Vocational student at <strong className="text-[#1F1F1F] font-black">SMK Negeri 5 Malang</strong>. I build full-stack web applications and interactive digital experiences, focusing on clean design, solid performance, and thoughtful user interactions.
               </p>
 
               {/* Minimalist Pill Tags */}
@@ -297,7 +297,7 @@ export default function About() {
                 {["Web Development", "Creative Tech", "Digital Experience"].map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 rounded-full text-xs font-bold tracking-wide text-[#291B48] border border-[#9FB2C8] bg-[#D5CCCD] shadow-xs"
+                    className="px-3 py-1 rounded-full text-xs font-bold tracking-wide text-[#1F1F1F] border border-[#0054A6] bg-[#FFFFFF] shadow-xs"
                   >
                     #{tag}
                   </span>
@@ -306,23 +306,23 @@ export default function About() {
             </div>
 
             {/* Right Column: Experience & Hobbies (Col 5) */}
-            <div className="lg:col-span-5 space-y-4 lg:space-y-7 border-t lg:border-t-0 lg:border-l border-[#9FB2C8] pt-5 lg:pt-0 pl-0 lg:pl-8">
+            <div className="lg:col-span-5 space-y-4 lg:space-y-7 border-t lg:border-t-0 lg:border-l border-[#0054A6] pt-5 lg:pt-0 pl-0 lg:pl-8">
               
               {/* Experience Metric Lockup */}
               <div className="space-y-1.5 sm:space-y-2">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#5E87B6] uppercase">
-                  <Sparkles size={14} className="text-[#5E87B6]" />
+                <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#29ABE2] uppercase">
+                  <Sparkles size={14} className="text-[#29ABE2]" />
                   <span>ENGINEERING EXPERIENCE</span>
                 </div>
                 <div className="flex items-baseline gap-3.5">
-                  <div ref={counterRef1} className="text-5xl sm:text-6xl font-black text-[#291B48] font-mono tracking-tight leading-none">
+                  <div ref={counterRef1} className="text-5xl sm:text-6xl font-black text-[#1F1F1F] font-mono tracking-tight leading-none">
                     0+
                   </div>
                   <div className="space-y-0.5">
-                    <div className="text-sm sm:text-base font-black uppercase tracking-wider text-[#291B48]">
+                    <div className="text-sm sm:text-base font-black uppercase tracking-wider text-[#1F1F1F]">
                       Years Experience
                     </div>
-                    <div className="text-xs uppercase font-mono font-bold tracking-widest text-[#5E87B6]">
+                    <div className="text-xs uppercase font-mono font-bold tracking-widest text-[#29ABE2]">
                       As Software Engineer
                     </div>
                   </div>
@@ -330,19 +330,19 @@ export default function About() {
               </div>
 
               {/* Hobbies & Passions Section - Open Editorial List (No Cards) */}
-              <div className="border-t border-[#9FB2C8]/40 pt-3.5 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-mono font-black uppercase tracking-widest text-[#291B48]">
+              <div className="border-t border-[#0054A6]/40 pt-3.5 space-y-2">
+                <div className="flex items-center gap-2 text-xs font-mono font-black uppercase tracking-widest text-[#1F1F1F]">
                   <span>HOBBIES & INTERESTS</span>
                 </div>
 
-                <div className="divide-y divide-[#9FB2C8]/25">
+                <div className="divide-y divide-[#0054A6]/25">
                   {/* Hobby 1: Playing Music */}
                   <div className="group py-2 sm:py-2.5 flex items-center justify-between gap-3 transition-colors">
                     <div className="min-w-0">
-                      <div className="text-sm font-bold text-[#291B48] group-hover:text-[#5E87B6] group-hover:translate-x-1 transition-all truncate">
+                      <div className="text-sm font-bold text-[#1F1F1F] group-hover:text-[#29ABE2] group-hover:translate-x-1 transition-all truncate">
                         Playing Music
                       </div>
-                      <div className="text-xs font-mono text-[#291B48]/70 truncate">
+                      <div className="text-xs font-mono text-[#1F1F1F]/70 truncate">
                         Piano & guitar melodies
                       </div>
                     </div>
@@ -351,10 +351,10 @@ export default function About() {
                   {/* Hobby 2: Video Gaming */}
                   <div className="group py-2 sm:py-2.5 flex items-center justify-between gap-3 transition-colors">
                     <div className="min-w-0">
-                      <div className="text-sm font-bold text-[#291B48] group-hover:text-[#5E87B6] group-hover:translate-x-1 transition-all truncate">
+                      <div className="text-sm font-bold text-[#1F1F1F] group-hover:text-[#29ABE2] group-hover:translate-x-1 transition-all truncate">
                         Video Games
                       </div>
-                      <div className="text-xs font-mono text-[#291B48]/70 truncate">
+                      <div className="text-xs font-mono text-[#1F1F1F]/70 truncate">
                         Strategy & immersive worlds
                       </div>
                     </div>
@@ -363,10 +363,10 @@ export default function About() {
                   {/* Hobby 3: Sports & Athletics */}
                   <div className="group py-2 sm:py-2.5 flex items-center justify-between gap-3 transition-colors">
                     <div className="min-w-0">
-                      <div className="text-sm font-bold text-[#291B48] group-hover:text-[#5E87B6] group-hover:translate-x-1 transition-all truncate">
+                      <div className="text-sm font-bold text-[#1F1F1F] group-hover:text-[#29ABE2] group-hover:translate-x-1 transition-all truncate">
                         Sports & Athletics
                       </div>
-                      <div className="text-xs font-mono text-[#291B48]/70 truncate">
+                      <div className="text-xs font-mono text-[#1F1F1F]/70 truncate">
                         Running & volleyball sessions
                       </div>
                     </div>
@@ -375,10 +375,10 @@ export default function About() {
                   {/* Hobby 4: Watching Cinema */}
                   <div className="group py-2 sm:py-2.5 flex items-center justify-between gap-3 transition-colors">
                     <div className="min-w-0">
-                      <div className="text-sm font-bold text-[#291B48] group-hover:text-[#5E87B6] group-hover:translate-x-1 transition-all truncate">
+                      <div className="text-sm font-bold text-[#1F1F1F] group-hover:text-[#29ABE2] group-hover:translate-x-1 transition-all truncate">
                         Watching Cinema
                       </div>
-                      <div className="text-xs font-mono text-[#291B48]/70 truncate">
+                      <div className="text-xs font-mono text-[#1F1F1F]/70 truncate">
                         Films, series & visual narratives
                       </div>
                     </div>
@@ -387,10 +387,10 @@ export default function About() {
                   {/* Hobby 5: Reading Books */}
                   <div className="group py-2 sm:py-2.5 flex items-center justify-between gap-3 transition-colors">
                     <div className="min-w-0">
-                      <div className="text-sm font-bold text-[#291B48] group-hover:text-[#5E87B6] group-hover:translate-x-1 transition-all truncate">
+                      <div className="text-sm font-bold text-[#1F1F1F] group-hover:text-[#29ABE2] group-hover:translate-x-1 transition-all truncate">
                         Reading Books
                       </div>
-                      <div className="text-xs font-mono text-[#291B48]/70 truncate">
+                      <div className="text-xs font-mono text-[#1F1F1F]/70 truncate">
                         Software architecture & literature
                       </div>
                     </div>
@@ -413,10 +413,10 @@ export default function About() {
           <div className="w-full max-w-5xl flex flex-col items-center justify-center">
             {/* Header Badge & Title */}
             <div className="text-center mb-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#9FB2C8] bg-[#D5CCCD] text-xs font-mono font-bold tracking-widest uppercase text-[#5E87B6] mb-1.5 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#0054A6] bg-[#FFFFFF] text-xs font-mono font-bold tracking-widest uppercase text-[#29ABE2] mb-1.5 shadow-xs">
                 David Nafisy
               </div>
-              <h3 className="text-2xl sm:text-4xl font-display font-black text-[#291B48] tracking-tight">
+              <h3 className="text-2xl sm:text-4xl font-display font-black text-[#1F1F1F] tracking-tight">
                 Behind the Code
               </h3>
             </div>

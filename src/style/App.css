@@ -1,13 +1,13 @@
 .app-container {
-  background-color: #D5CCCD;
+  background-color: #FFFFFF;
   min-height: 100vh;
   position: relative;
-  color: #291B48;
+  color: #1F1F1F;
 }
 
 .app-container ::selection {
-  background-color: #5E87B6;
-  color: #D5CCCD;
+  background-color: #29ABE2;
+  color: #FFFFFF;
 }
 
 .soft-mesh {
@@ -20,7 +20,7 @@
   left: 0;
   right: 0;
   height: 0.25rem;
-  background-color: #5E87B6;
+  background-color: #29ABE2;
   z-index: 100;
   transform-origin: left;
 }

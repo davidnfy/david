@@ -82,10 +82,10 @@ export default function App() {
   }, [])
 
   return (
-    <div className="min-h-screen w-full relative text-[#291B48] bg-[#D5CCCD] overflow-x-clip selection:bg-[#5E87B6] selection:text-[#D5CCCD]">
+    <div className="min-h-screen w-full relative text-[#1F1F1F] bg-[#FFFFFF] overflow-x-clip selection:bg-[#29ABE2] selection:text-[#FFFFFF]">
       {/* Top Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-[#5E87B6] z-50 origin-left shadow-xs"
+        className="fixed top-0 left-0 right-0 h-1 bg-[#29ABE2] z-50 origin-left shadow-xs"
         style={{ scaleX }}
       />
 

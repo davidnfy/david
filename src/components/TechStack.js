@@ -63,7 +63,7 @@ function TechItemMinimal({ tech }) {
 
   return (
     <div 
-      className="group relative flex items-center gap-3 px-4 py-2.5 bg-[#D5CCCD] rounded-full border border-[#9FB2C8] hover:border-[#291B48] hover:scale-105 transition-all duration-300 flex-shrink-0 select-none cursor-pointer shadow-xs"
+      className="group relative flex items-center gap-3 px-4 py-2.5 bg-[#FFFFFF] rounded-full border border-[#0054A6] hover:border-[#1F1F1F] hover:scale-105 transition-all duration-300 flex-shrink-0 select-none cursor-pointer shadow-xs"
       title={tech.name}
     >
       <div className="w-6 h-6 flex items-center justify-center shrink-0">
@@ -76,7 +76,7 @@ function TechItemMinimal({ tech }) {
         />
       </div>
 
-      <span className="text-xs font-bold text-[#291B48] tracking-tight group-hover:text-[#5E87B6] transition-colors">
+      <span className="text-xs font-bold text-[#1F1F1F] tracking-tight group-hover:text-[#29ABE2] transition-colors">
         {tech.name}
       </span>
     </div>
@@ -173,7 +173,7 @@ export default function TechStack() {
   const row2Repeated = [...row2, ...row2, ...row2, ...row2]
 
   return (
-    <section id="stack" className="relative w-full py-28 bg-[#D5CCCD] border-t border-[#9FB2C8] overflow-hidden">
+    <section id="stack" className="relative w-full py-28 bg-[#FFFFFF] border-t border-[#0054A6] overflow-hidden">
       <div className="absolute inset-0 tech-dot-grid opacity-30 pointer-events-none" />
 
       {/* Floating Badges */}
@@ -188,7 +188,7 @@ export default function TechStack() {
 
       {/* Header */}
       <div ref={headerRef} className="w-full px-6 sm:px-12 md:px-16 lg:px-20 xl:px-28 mb-14 space-y-3 relative z-10">
-        <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-[#5E87B6]">
+        <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-[#29ABE2]">
           <Wrench size={16} />
           <span>TECH & TOOLS</span>
         </div>
@@ -196,11 +196,11 @@ export default function TechStack() {
           as="h2"
           from={1.5}
           origin="left center"
-          className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#291B48] uppercase"
+          className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#1F1F1F] uppercase"
         >
-          TECH <span className="text-[#5E87B6]">ECOSYSTEM.</span>
+          TECH <span className="text-[#29ABE2]">ECOSYSTEM.</span>
         </ScaleInTitle>
-        <p className="max-w-xl text-[#291B48]/70 text-sm sm:text-base font-medium">
+        <p className="max-w-xl text-[#1F1F1F]/70 text-sm sm:text-base font-medium">
           Modern languages, 3D WebGL graphics, full-stack frameworks, and databases.
         </p>
       </div>
@@ -233,17 +233,17 @@ export default function TechStack() {
       </div>
 
       {/* Crency Agency-style Interactive 3D Architectural Pillars */}
-      <div className="w-full max-w-6xl mx-auto px-6 sm:px-12 md:px-16 lg:px-20 mt-16 pt-12 border-t border-[#9FB2C8] relative z-10">
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-12 md:px-16 lg:px-20 mt-16 pt-12 border-t border-[#0054A6] relative z-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
-            <span className="text-xs font-black tracking-[0.25em] text-[#5E87B6] uppercase">
+            <span className="text-xs font-black tracking-[0.25em] text-[#29ABE2] uppercase">
               ENGINEERING CORE
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-[#291B48] uppercase mt-1">
+            <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-[#1F1F1F] uppercase mt-1">
               Working technique
             </h3>
           </div>
-          <span className="text-xs text-[#291B48]/70 font-mono">
+          <span className="text-xs text-[#1F1F1F]/70 font-mono">
             [ HOVER OR CLICK TO INSPECT 3D BLUEPRINT ]
           </span>
         </div>

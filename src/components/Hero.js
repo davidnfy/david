@@ -41,14 +41,14 @@ export default function Hero() {
     <section
       id="home"
       ref={sectionRef}
-      className="relative w-full min-h-screen flex flex-col justify-between px-5 sm:px-12 md:px-16 lg:px-20 xl:px-28 pt-24 sm:pt-28 pb-10 sm:pb-12 overflow-hidden bg-[#D5CCCD] text-[#291B48] select-none"
+      className="relative w-full min-h-screen flex flex-col justify-between px-5 sm:px-12 md:px-16 lg:px-20 xl:px-28 pt-24 sm:pt-28 pb-10 sm:pb-12 overflow-hidden bg-[#FFFFFF] text-[#1F1F1F] select-none"
     >
       {/* Dynamic Animated Background: GhostFibers */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         <GhostFibers
-          lineColor="#291B48"
-          glowColor="#5E87B6"
-          backdropColor="#D5CCCD"
+          lineColor="#1F1F1F"
+          glowColor="#29ABE2"
+          backdropColor="#FFFFFF"
           lightMode={true}
           speed={0.18}
           scale={1.4}
@@ -90,7 +90,7 @@ export default function Hero() {
             <div className="overflow-hidden flex items-center gap-4">
               <h1
                 ref={titleLine1Ref}
-                className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#291B48] uppercase"
+                className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#1F1F1F] uppercase"
               >
                 Crafting
               </h1>
@@ -98,7 +98,7 @@ export default function Hero() {
                 initial={{ rotate: 0 }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
-                className="hidden xl:flex w-10 h-10 rounded-2xl bg-[#D5CCCD] border border-[#9FB2C8] items-center justify-center text-[#291B48] shadow-xs"
+                className="hidden xl:flex w-10 h-10 rounded-2xl bg-[#FFFFFF] border border-[#0054A6] items-center justify-center text-[#1F1F1F] shadow-xs"
               >
                 <Box size={20} />
               </motion.div>
@@ -108,7 +108,7 @@ export default function Hero() {
             <div className="overflow-hidden py-1">
               <h1
                 ref={titleLine2Ref}
-                className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-latin italic font-normal tracking-tight leading-none text-[#5E87B6] select-none"
+                className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-latin italic font-normal tracking-tight leading-none text-[#29ABE2] select-none"
               >
                 empathetic
               </h1>
@@ -118,7 +118,7 @@ export default function Hero() {
             <div className="overflow-hidden py-1">
               <h1
                 ref={titleLine3Ref}
-                className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-latin italic font-normal tracking-tight leading-none text-[#5E87B6] select-none"
+                className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-latin italic font-normal tracking-tight leading-none text-[#29ABE2] select-none"
               >
                 digital
               </h1>
@@ -128,29 +128,29 @@ export default function Hero() {
             <div className="overflow-hidden">
               <h1
                 ref={titleLine4Ref}
-                className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#291B48] uppercase"
+                className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#1F1F1F] uppercase"
               >
-                experiences<span className="text-[#9FB2C8]">.</span>
+                experiences<span className="text-[#0054A6]">.</span>
               </h1>
             </div>
           </div>
 
           <div className="flex items-center gap-3 pt-1">
-            <span className="font-signature text-3xl sm:text-4xl text-[#5E87B6] select-none -rotate-2">
+            <span className="font-signature text-3xl sm:text-4xl text-[#29ABE2] select-none -rotate-2">
               David Nafisy
             </span>
-            <span className="h-px w-10 bg-[#9FB2C8]" />
-            <span className="text-[11px] font-mono font-bold tracking-widest text-[#291B48]/60 uppercase">
+            <span className="h-px w-10 bg-[#0054A6]" />
+            <span className="text-[11px] font-mono font-bold tracking-widest text-[#1F1F1F]/60 uppercase">
               DIGITAL SIGNATURE
             </span>
           </div>
 
-          <p className="max-w-2xl text-base sm:text-lg text-[#291B48]/85 font-sans leading-relaxed">
-            I'm <strong className="text-[#291B48] font-black">David Nafisy</strong> — engineering software systems and interactive 3D spatial web environments with precision and tactile responsiveness.
+          <p className="max-w-2xl text-base sm:text-lg text-[#1F1F1F]/85 font-sans leading-relaxed">
+            I'm <strong className="text-[#1F1F1F] font-black">David Nafisy</strong> — engineering software systems and interactive 3D spatial web environments with precision and tactile responsiveness.
           </p>
 
-          <div className="pt-2 flex items-center gap-3 text-xs font-mono font-bold tracking-widest uppercase text-[#5E87B6]">
-            <Sparkles size={16} className="text-[#5E87B6]" />
+          <div className="pt-2 flex items-center gap-3 text-xs font-mono font-bold tracking-widest uppercase text-[#29ABE2]">
+            <Sparkles size={16} className="text-[#29ABE2]" />
             <span>MINIMALIST 3D ARCHITECTURE</span>
           </div>
         </div>
@@ -181,16 +181,16 @@ export default function Hero() {
       </div>
 
       {}
-      <div className="hero-animate w-full border-t border-[#9FB2C8] pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-[#291B48]/70 font-bold tracking-wider z-10 gap-2">
+      <div className="hero-animate w-full border-t border-[#0054A6] pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-[#1F1F1F]/70 font-bold tracking-wider z-10 gap-2">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 bg-[#5E87B6] rounded-full" />
+          <span className="w-2 h-2 bg-[#29ABE2] rounded-full" />
           <span>SOFTWARE ENGINEER</span>
         </div>
-        <div className="flex items-center gap-6 uppercase text-[11px] text-[#291B48]">
+        <div className="flex items-center gap-6 uppercase text-[11px] text-[#1F1F1F]">
           <span>•</span>
-          <span className="text-[#5E87B6]">East Java</span>
+          <span className="text-[#29ABE2]">East Java</span>
           <span>•</span>
-          <span className="text-[#9FB2C8]">MALANG</span>
+          <span className="text-[#0054A6]">MALANG</span>
         </div>
       </div>
     </section>

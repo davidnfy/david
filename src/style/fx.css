@@ -1,6 +1,6 @@
 /* ==========================================================================
    FX layer — motion patterns adapted from roiheads.com, ryanritzenthaler.com
-   and unitedinfootball. Palette: #291B48 / #D5CCCD / #5E87B6 / #9FB2C8.
+   and unitedinfootball. Palette: #1F1F1F / #FFFFFF / #29ABE2 / #0054A6.
    Everything animates transform / opacity only.
    ========================================================================== */
 
@@ -18,35 +18,35 @@
   gap: 0.4em;
   padding: 0.6em 1.15em;
   border-radius: 9999px;
-  border: 1.5px solid #291B48;
+  border: 1.5px solid #1F1F1F;
   font-family: var(--font-display);
   font-weight: 800;
   font-size: clamp(10px, 1.05vw, 14px);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   white-space: nowrap;
-  box-shadow: 4px 5px 0 0 #291B48;
+  box-shadow: 4px 5px 0 0 #1F1F1F;
 }
 
 .fx-sticker--plum .fx-sticker__body {
-  background: #291B48;
-  color: #D5CCCD;
-  box-shadow: 4px 5px 0 0 #5E87B6;
+  background: #1F1F1F;
+  color: #FFFFFF;
+  box-shadow: 4px 5px 0 0 #29ABE2;
 }
 
 .fx-sticker--azure .fx-sticker__body {
-  background: #5E87B6;
-  color: #D5CCCD;
+  background: #29ABE2;
+  color: #FFFFFF;
 }
 
 .fx-sticker--blush .fx-sticker__body {
-  background: #D5CCCD;
-  color: #291B48;
+  background: #FFFFFF;
+  color: #1F1F1F;
 }
 
 .fx-sticker--cloud .fx-sticker__body {
-  background: #9FB2C8;
-  color: #291B48;
+  background: #0054A6;
+  color: #1F1F1F;
 }
 
 /* ---------- Scale-in titles ---------- */
@@ -75,30 +75,30 @@
   width: 100%;
   overflow: hidden;
   padding: 2.25rem 0;
-  background: #D5CCCD;
+  background: #FFFFFF;
 }
 
 .fx-marquee {
   width: 112%;
   margin-left: -6%;
   overflow: hidden;
-  border-top: 1.5px solid #291B48;
-  border-bottom: 1.5px solid #291B48;
+  border-top: 1.5px solid #1F1F1F;
+  border-bottom: 1.5px solid #1F1F1F;
 }
 
 .fx-marquee--plum {
-  background: #291B48;
-  color: #D5CCCD;
+  background: #1F1F1F;
+  color: #FFFFFF;
 }
 
 .fx-marquee--azure {
-  background: #5E87B6;
-  color: #D5CCCD;
+  background: #29ABE2;
+  color: #FFFFFF;
 }
 
 .fx-marquee--blush {
-  background: #D5CCCD;
-  color: #291B48;
+  background: #FFFFFF;
+  color: #1F1F1F;
 }
 
 .fx-marquee__track {
@@ -130,11 +130,11 @@
 .fx-marquee__star {
   font-style: normal;
   font-size: 0.55em;
-  color: #5E87B6;
+  color: #29ABE2;
 }
 
 .fx-marquee--azure .fx-marquee__star {
-  color: #291B48;
+  color: #1F1F1F;
 }
 
 /* ---------- Roll text ---------- */
@@ -177,7 +177,7 @@ button:hover .fx-roll__bottom,
   display: inline-block;
   padding-bottom: var(--depth);
   border-radius: 9999px;
-  background: #291B48;
+  background: #1F1F1F;
   transform: rotate(-1.5deg);
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
   cursor: pointer;
@@ -190,7 +190,7 @@ button:hover .fx-roll__bottom,
   gap: 0.6em;
   padding: 0.95em 1.7em;
   border-radius: 9999px;
-  border: 1.5px solid #291B48;
+  border: 1.5px solid #1F1F1F;
   font-weight: 800;
   font-size: 0.8rem;
   letter-spacing: 0.16em;
@@ -200,13 +200,13 @@ button:hover .fx-roll__bottom,
 }
 
 .fx-press--azure .fx-press__face {
-  background: #5E87B6;
-  color: #D5CCCD;
+  background: #29ABE2;
+  color: #FFFFFF;
 }
 
 .fx-press--blush .fx-press__face {
-  background: #D5CCCD;
-  color: #291B48;
+  background: #FFFFFF;
+  color: #1F1F1F;
 }
 
 .fx-press:hover {
@@ -224,7 +224,7 @@ button:hover .fx-roll__bottom,
 
 .fx-press__label .fx-roll__top,
 .fx-press__label .fx-roll__bottom {
-  background: linear-gradient(89deg, #D5CCCD 22%, #9FB2C8 33%, #D5CCCD 40%, #D5CCCD 57%, #9FB2C8 70%, #D5CCCD 80%);
+  background: linear-gradient(89deg, #FFFFFF 22%, #0054A6 33%, #FFFFFF 40%, #FFFFFF 57%, #0054A6 70%, #FFFFFF 80%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -234,7 +234,7 @@ button:hover .fx-roll__bottom,
 
 .fx-press--blush .fx-press__label .fx-roll__top,
 .fx-press--blush .fx-press__label .fx-roll__bottom {
-  background-image: linear-gradient(89deg, #291B48 22%, #5E87B6 33%, #291B48 40%, #291B48 57%, #5E87B6 70%, #291B48 80%);
+  background-image: linear-gradient(89deg, #1F1F1F 22%, #29ABE2 33%, #1F1F1F 40%, #1F1F1F 57%, #29ABE2 70%, #1F1F1F 80%);
 }
 
 @keyframes fx-shimmer {
@@ -290,12 +290,12 @@ button:hover .fx-roll__bottom,
 
 .fx-index__item:hover,
 .fx-index__item.is-active {
-  color: #291B48;
+  color: #1F1F1F;
 }
 
 .fx-index__item.is-active .fx-index__line {
   transform: scaleX(2.6);
-  background: #5E87B6;
+  background: #29ABE2;
 }
 
 .fx-index__item.is-active .fx-index__label,
@@ -305,7 +305,7 @@ button:hover .fx-roll__bottom,
 }
 
 .fx-index__item.is-active .fx-index__label {
-  color: #5E87B6;
+  color: #29ABE2;
 }
 
 /* ---------- Project list view preview ---------- */
@@ -319,9 +319,9 @@ button:hover .fx-roll__bottom,
   pointer-events: none;
   border-radius: 1rem;
   overflow: hidden;
-  border: 1.5px solid #291B48;
-  box-shadow: 6px 8px 0 0 #291B48;
-  background: #D5CCCD;
+  border: 1.5px solid #1F1F1F;
+  box-shadow: 6px 8px 0 0 #1F1F1F;
+  background: #FFFFFF;
   will-change: transform;
 }
 

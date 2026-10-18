@@ -15,12 +15,12 @@
   --behind-glow-color: rgba(255, 255, 255, 0.68);
   --behind-glow-size: 34%;
   --inner-gradient: linear-gradient(145deg, rgba(41, 27, 72, 0.95) 0%, rgba(94, 135, 182, 0.38) 100%);
-  --sunpillar-1: #5E87B6;
-  --sunpillar-2: #9FB2C8;
-  --sunpillar-3: #291B48;
-  --sunpillar-4: #D5CCCD;
-  --sunpillar-5: #5E87B6;
-  --sunpillar-6: #9FB2C8;
+  --sunpillar-1: #29ABE2;
+  --sunpillar-2: #0054A6;
+  --sunpillar-3: #1F1F1F;
+  --sunpillar-4: #FFFFFF;
+  --sunpillar-5: #29ABE2;
+  --sunpillar-6: #0054A6;
   --sunpillar-clr-1: var(--sunpillar-1);
   --sunpillar-clr-2: var(--sunpillar-2);
   --sunpillar-clr-3: var(--sunpillar-3);
@@ -73,7 +73,7 @@
     calc((var(--pointer-from-top) * 22px) - 6px) 24px -5px;
   transition: transform 0.8s ease;
   transform: translateZ(0) rotateX(0deg) rotateY(0deg);
-  background: #291B48;
+  background: #1F1F1F;
   border: 1px solid rgba(159, 178, 200, 0.35);
   backface-visibility: hidden;
   overflow: hidden;
@@ -105,7 +105,7 @@
   inset: 0;
   position: absolute;
   background-image: var(--inner-gradient);
-  background-color: #291B48;
+  background-color: #1F1F1F;
   transform: none;
 }
 
@@ -145,12 +145,12 @@
     ),
     repeating-linear-gradient(
       var(--angle),
-      #291B48 0%,
+      #1F1F1F 0%,
       rgba(94, 135, 182, 0.4) 3.8%,
       rgba(159, 178, 200, 0.5) 4.5%,
       rgba(94, 135, 182, 0.4) 5.2%,
-      #291B48 10%,
-      #291B48 12%
+      #1F1F1F 10%,
+      #1F1F1F 12%
     ),
     radial-gradient(
       farthest-corner circle at var(--pointer-x) var(--pointer-y),
@@ -204,7 +204,7 @@
       var(--sunpillar-2),
       var(--sunpillar-3)
     ),
-    radial-gradient(circle at var(--pointer-x) var(--pointer-y), #D5CCCD 0%, rgba(41, 27, 72, 0.3) 90%),
+    radial-gradient(circle at var(--pointer-x) var(--pointer-y), #FFFFFF 0%, rgba(41, 27, 72, 0.3) 90%),
     var(--grain);
   background-size:
     250% 250%,
@@ -328,14 +328,14 @@
 .pc-handle {
   font-size: 13px;
   font-weight: 700;
-  color: #D5CCCD;
+  color: #FFFFFF;
   line-height: 1;
   font-family: monospace;
 }
 
 .pc-status {
   font-size: 11px;
-  color: #9FB2C8;
+  color: #0054A6;
   line-height: 1;
   display: flex;
   align-items: center;
@@ -348,7 +348,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #5E87B6;
+  background: #29ABE2;
 }
 
 .pc-contact-btn {
@@ -359,7 +359,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #D5CCCD;
+  color: #FFFFFF;
   background: rgba(94, 135, 182, 0.25);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -367,9 +367,9 @@
 }
 
 .pc-contact-btn:hover {
-  border-color: #5E87B6;
-  background: #5E87B6;
-  color: #D5CCCD;
+  border-color: #29ABE2;
+  background: #29ABE2;
+  color: #FFFFFF;
   transform: translateY(-1px);
 }
 
@@ -400,7 +400,7 @@
   letter-spacing: -0.02em;
   font-size: min(4.5svh, 1.8em);
   margin: 0;
-  color: #D5CCCD;
+  color: #FFFFFF;
   text-shadow: 0 2px 10px rgba(41, 27, 72, 0.6);
 }
 
@@ -414,7 +414,7 @@
   letter-spacing: 0.1em;
   margin: 0 auto;
   width: min-content;
-  color: #9FB2C8;
+  color: #0054A6;
   text-shadow: 0 2px 8px rgba(41, 27, 72, 0.6);
 }
 

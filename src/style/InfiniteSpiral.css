@@ -21,7 +21,7 @@
   width: var(--infinite-spiral-card-width);
   height: var(--infinite-spiral-card-height);
   overflow: hidden;
-  border: 1.5px solid #291B48;
+  border: 1.5px solid #1F1F1F;
   border-radius: var(--infinite-spiral-card-radius);
   background: rgba(213, 204, 205, 0.95);
   box-shadow: 0 16px 36px rgba(41, 27, 72, 0.22);

@@ -70,7 +70,7 @@ export default function TiltedCard3D({
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.12 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 rounded-2xl pointer-events-none bg-[#D5CCCD] border border-[#9FB2C8]/40"
+            className="absolute inset-0 rounded-2xl pointer-events-none bg-[#FFFFFF] border border-[#0054A6]/40"
             style={{
               transform: "translateZ(30px)"
             }}

@@ -104,7 +104,7 @@ export default function Contact() {
   return (
     <footer
       id="contact"
-      className="relative w-full py-20 sm:py-28 px-5 sm:px-12 md:px-16 lg:px-20 xl:px-28 bg-[#D5CCCD] text-[#291B48] border-t border-[#9FB2C8] overflow-hidden"
+      className="relative w-full py-20 sm:py-28 px-5 sm:px-12 md:px-16 lg:px-20 xl:px-28 bg-[#FFFFFF] text-[#1F1F1F] border-t border-[#0054A6] overflow-hidden"
     >
       <div className="absolute inset-0 tech-dot-grid opacity-30 pointer-events-none" />
 
@@ -124,7 +124,7 @@ export default function Contact() {
         {/* Left Col */}
         <div ref={headingRef} className="lg:col-span-7 space-y-6">
           <div className="space-y-3">
-            <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-[#5E87B6]">
+            <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-[#29ABE2]">
               <MessageSquare size={16} />
               <span>05 // INITIATE CONTACT</span>
             </div>
@@ -132,14 +132,14 @@ export default function Contact() {
               as="h2"
               from={1.6}
               origin="left center"
-              className="text-4xl xs:text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[#291B48] uppercase leading-[0.9]"
+              className="text-4xl xs:text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[#1F1F1F] uppercase leading-[0.9]"
             >
               LET'S <br />
-              <span className="text-[#5E87B6]">COLLABORATE.</span>
+              <span className="text-[#29ABE2]">COLLABORATE.</span>
             </ScaleInTitle>
           </div>
 
-          <p className="max-w-lg text-base sm:text-lg text-[#291B48]/75 font-normal leading-relaxed">
+          <p className="max-w-lg text-base sm:text-lg text-[#1F1F1F]/75 font-normal leading-relaxed">
             Interested in building next-generation 3D spatial web apps or robust full-stack software systems? Drop me a direct message.
           </p>
 
@@ -155,10 +155,10 @@ export default function Contact() {
 
             <button
               onClick={handleCopyEmail}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full border-2 border-[#291B48] bg-[#D5CCCD] text-xs font-black tracking-wider text-[#291B48] hover:bg-[#291B48] hover:text-[#D5CCCD] transition-all cursor-pointer shadow-[3px_3px_0_0_#291B48] active:translate-x-0.5 active:translate-y-0.5"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full border-2 border-[#1F1F1F] bg-[#FFFFFF] text-xs font-black tracking-wider text-[#1F1F1F] hover:bg-[#1F1F1F] hover:text-[#FFFFFF] transition-all cursor-pointer shadow-[3px_3px_0_0_#1F1F1F] active:translate-x-0.5 active:translate-y-0.5"
               title="Copy Email Address"
             >
-              {copied ? <Check size={14} className="text-[#5E87B6]" /> : <Copy size={14} />}
+              {copied ? <Check size={14} className="text-[#29ABE2]" /> : <Copy size={14} />}
               <span>{copied ? "COPIED TO CLIPBOARD" : "COPY EMAIL"}</span>
             </button>
           </div>
@@ -166,14 +166,14 @@ export default function Contact() {
 
         {/* Right Col: Socials */}
         <div ref={socialsRef} className="lg:col-span-5 space-y-6">
-          <div className="flex items-center justify-between border-b border-[#9FB2C8] pb-3">
-            <span className="text-xs font-black uppercase tracking-widest text-[#291B48]">
+          <div className="flex items-center justify-between border-b border-[#0054A6] pb-3">
+            <span className="text-xs font-black uppercase tracking-widest text-[#1F1F1F]">
               CHANNELS
             </span>
-            <div className="flex items-center gap-2 text-[#5E87B6] text-xs font-bold">
+            <div className="flex items-center gap-2 text-[#29ABE2] text-xs font-bold">
               <span className="relative flex h-2 w-2">
-                <span className="contact-dot-pulse absolute inline-flex h-full w-full rounded-full bg-[#5E87B6] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#5E87B6]" />
+                <span className="contact-dot-pulse absolute inline-flex h-full w-full rounded-full bg-[#29ABE2] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#29ABE2]" />
               </span>
               <span>AVAILABLE NOW</span>
             </div>
@@ -188,18 +188,18 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 onMouseMove={(e) => handleMagneticMove(e, 0.2)}
                 onMouseLeave={handleMagneticLeave}
-                className="flex items-center justify-between py-3 border-b border-[#9FB2C8]/60 group transition-all"
+                className="flex items-center justify-between py-3 border-b border-[#0054A6]/60 group transition-all"
               >
                 <div className="space-y-0.5">
-                  <span className="text-xs font-black tracking-widest uppercase text-[#291B48]/50 group-hover:text-[#291B48] transition-colors">
+                  <span className="text-xs font-black tracking-widest uppercase text-[#1F1F1F]/50 group-hover:text-[#1F1F1F] transition-colors">
                     {social.label}
                   </span>
-                  <p className="text-sm font-bold text-[#291B48] group-hover:text-[#5E87B6] transition-colors">
+                  <p className="text-sm font-bold text-[#1F1F1F] group-hover:text-[#29ABE2] transition-colors">
                     <RollText>{social.username}</RollText>
                   </p>
                 </div>
 
-                <div className="text-[#291B48]/40 group-hover:text-[#5E87B6] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">
+                <div className="text-[#1F1F1F]/40 group-hover:text-[#29ABE2] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">
                   <ArrowUpRight size={18} />
                 </div>
               </a>
@@ -210,9 +210,9 @@ export default function Contact() {
       </div>
 
       {/* Bottom Copyright */}
-      <div className="w-full mt-24 pt-6 border-t border-[#9FB2C8] flex flex-col sm:flex-row items-center justify-between text-xs text-[#291B48]/70 font-bold uppercase tracking-widest relative z-10 gap-4">
+      <div className="w-full mt-24 pt-6 border-t border-[#0054A6] flex flex-col sm:flex-row items-center justify-between text-xs text-[#1F1F1F]/70 font-bold uppercase tracking-widest relative z-10 gap-4">
         <div className="flex items-center gap-2">
-          <Globe size={14} className="text-[#5E87B6]" />
+          <Globe size={14} className="text-[#29ABE2]" />
           <span>© 2026 DAVID NAFISY — MALANG, ID</span>
         </div>
       </div>

@@ -166,7 +166,7 @@ export default function Projects() {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative w-full py-20 sm:py-32 px-5 sm:px-12 md:px-16 lg:px-20 xl:px-28 bg-[#D5CCCD] text-[#291B48] overflow-hidden border-t border-[#9FB2C8]"
+      className="relative w-full py-20 sm:py-32 px-5 sm:px-12 md:px-16 lg:px-20 xl:px-28 bg-[#FFFFFF] text-[#1F1F1F] overflow-hidden border-t border-[#0054A6]"
     >
       {/* Background solid tech dot grid */}
       <div className="absolute inset-0 tech-dot-grid opacity-40 pointer-events-none" />
@@ -193,7 +193,7 @@ export default function Projects() {
       {/* Section Header */}
       <div ref={headerRef} className="w-full flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-14 relative z-10">
         <div className="space-y-3">
-          <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-[#5E87B6]">
+          <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-[#29ABE2]">
             <Sparkles size={14} />
             <span>SELECTED ARCHIVES</span>
           </div>
@@ -201,26 +201,26 @@ export default function Projects() {
             as="h2"
             from={1.6}
             origin="left center"
-            className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-[#291B48] uppercase"
+            className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-[#1F1F1F] uppercase"
           >
-            FEATURED <span className="text-[#5E87B6]">PROJECTS.</span>
+            FEATURED <span className="text-[#29ABE2]">PROJECTS.</span>
           </ScaleInTitle>
         </div>
 
         <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center gap-4">
           <SplitReveal
             text="Open spatial gallery. Clean engineering artifacts."
-            className="max-w-xs text-sm sm:text-base text-[#291B48]/80 font-latin italic leading-relaxed"
+            className="max-w-xs text-sm sm:text-base text-[#1F1F1F]/80 font-latin italic leading-relaxed"
           />
 
           {/* View Mode Switcher */}
-          <div className="inline-flex items-center p-1 rounded-full border border-[#9FB2C8] bg-[#D5CCCD]/90 backdrop-blur-xs shadow-xs">
+          <div className="inline-flex items-center p-1 rounded-full border border-[#0054A6] bg-[#FFFFFF]/90 backdrop-blur-xs shadow-xs">
             <button
               onClick={() => setViewMode("grid")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-black tracking-wider uppercase transition-all cursor-pointer ${
                 viewMode === "grid"
-                  ? "bg-[#291B48] text-[#D5CCCD] shadow-xs"
-                  : "text-[#291B48]/70 hover:text-[#291B48]"
+                  ? "bg-[#1F1F1F] text-[#FFFFFF] shadow-xs"
+                  : "text-[#1F1F1F]/70 hover:text-[#1F1F1F]"
               }`}
             >
               <LayoutGrid size={13} />
@@ -230,8 +230,8 @@ export default function Projects() {
               onClick={() => setViewMode("list")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-black tracking-wider uppercase transition-all cursor-pointer ${
                 viewMode === "list"
-                  ? "bg-[#291B48] text-[#D5CCCD] shadow-xs"
-                  : "text-[#291B48]/70 hover:text-[#291B48]"
+                  ? "bg-[#1F1F1F] text-[#FFFFFF] shadow-xs"
+                  : "text-[#1F1F1F]/70 hover:text-[#1F1F1F]"
               }`}
             >
               <ListFilter size={13} />
@@ -253,15 +253,15 @@ export default function Projects() {
               <GlareHover
                 width="100%"
                 height="100%"
-                background="#D5CCCD"
+                background="#FFFFFF"
                 borderRadius="1rem"
-                borderColor="#9FB2C8"
-                glareColor="#9FB2C8"
+                borderColor="#0054A6"
+                glareColor="#0054A6"
                 glareOpacity={0.4}
                 glareAngle={-30}
                 glareSize={250}
                 transitionDuration={750}
-                className="relative w-full aspect-video rounded-2xl overflow-hidden border border-[#9FB2C8] bg-[#D5CCCD] shadow-sm transition-all duration-500 group-hover:scale-[1.015] group-hover:shadow-md"
+                className="relative w-full aspect-video rounded-2xl overflow-hidden border border-[#0054A6] bg-[#FFFFFF] shadow-sm transition-all duration-500 group-hover:scale-[1.015] group-hover:shadow-md"
               >
                 <img
                   src={project.image}
@@ -275,7 +275,7 @@ export default function Projects() {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute bottom-3 right-3 p-2.5 rounded-full bg-[#291B48] text-[#D5CCCD] hover:bg-[#5E87B6] transition-colors shadow-sm flex items-center justify-center cursor-pointer z-10"
+                  className="absolute bottom-3 right-3 p-2.5 rounded-full bg-[#1F1F1F] text-[#FFFFFF] hover:bg-[#29ABE2] transition-colors shadow-sm flex items-center justify-center cursor-pointer z-10"
                   title="View Source on GitHub"
                 >
                   <ArrowUpRight size={18} />
@@ -285,13 +285,13 @@ export default function Projects() {
               {/* Typography Information */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-[#291B48] group-hover:text-[#5E87B6] transition-colors">
+                  <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-[#1F1F1F] group-hover:text-[#29ABE2] transition-colors">
                     <RollText>{project.title}</RollText>
                   </h3>
                  
                 </div>
 
-                <p className="text-sm text-[#291B48]/75 font-normal leading-relaxed">
+                <p className="text-sm text-[#1F1F1F]/75 font-normal leading-relaxed">
                   {project.description}
                 </p>
               </div>
@@ -302,7 +302,7 @@ export default function Projects() {
 
       {/* VIEW MODE: INDEX / LIST (Minimal Directory with Hover Bottom-Right Preview) */}
       {viewMode === "list" && (
-        <div className="w-full max-w-4xl mx-auto divide-y divide-[#9FB2C8] border-y border-[#9FB2C8] relative z-10">
+        <div className="w-full max-w-4xl mx-auto divide-y divide-[#0054A6] border-y border-[#0054A6] relative z-10">
           {projects.map((project) => (
             <a
               key={project.id}
@@ -311,25 +311,25 @@ export default function Projects() {
               rel="noopener noreferrer"
               onMouseEnter={() => setHoveredProject(project)}
               onMouseLeave={() => setHoveredProject(null)}
-              className="group flex items-center justify-between py-6 px-3 sm:px-4 hover:bg-[#291B48]/5 transition-colors gap-6"
+              className="group flex items-center justify-between py-6 px-3 sm:px-4 hover:bg-[#1F1F1F]/5 transition-colors gap-6"
             >
               <div className="flex items-center gap-4 sm:gap-6 flex-1 min-w-0">
-                <span className="font-mono text-xs sm:text-sm font-bold text-[#5E87B6] shrink-0">
+                <span className="font-mono text-xs sm:text-sm font-bold text-[#29ABE2] shrink-0">
                   {project.num}
                 </span>
 
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-xl sm:text-2xl font-display font-black tracking-tight text-[#291B48] group-hover:text-[#5E87B6] transition-colors truncate">
+                  <h3 className="text-xl sm:text-2xl font-display font-black tracking-tight text-[#1F1F1F] group-hover:text-[#29ABE2] transition-colors truncate">
                     <RollText>{project.title}</RollText>
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#291B48]/70 line-clamp-1 mt-1">
+                  <p className="text-xs sm:text-sm text-[#1F1F1F]/70 line-clamp-1 mt-1">
                     {project.description}
                   </p>
                 </div>
               </div>
 
               <div className="shrink-0 flex items-center">
-                <div className="w-9 h-9 rounded-full border border-[#9FB2C8] group-hover:bg-[#291B48] group-hover:border-[#291B48] group-hover:text-[#D5CCCD] flex items-center justify-center transition-all">
+                <div className="w-9 h-9 rounded-full border border-[#0054A6] group-hover:bg-[#1F1F1F] group-hover:border-[#1F1F1F] group-hover:text-[#FFFFFF] flex items-center justify-center transition-all">
                   <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>
@@ -346,14 +346,14 @@ export default function Projects() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 12 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed pointer-events-none z-50 bottom-8 right-8 w-72 sm:w-80 md:w-96 aspect-video rounded-2xl overflow-hidden border-2 border-[#291B48] bg-[#D5CCCD] shadow-[8px_8px_0_0_#291B48]"
+            className="fixed pointer-events-none z-50 bottom-8 right-8 w-72 sm:w-80 md:w-96 aspect-video rounded-2xl overflow-hidden border-2 border-[#1F1F1F] bg-[#FFFFFF] shadow-[8px_8px_0_0_#1F1F1F]"
           >
             <img
               src={hoveredProject.image}
               alt={hoveredProject.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute bottom-2.5 left-2.5 px-3 py-1 rounded-md bg-[#291B48]/90 text-[#D5CCCD] text-xs font-mono font-bold tracking-wider uppercase backdrop-blur-xs">
+            <div className="absolute bottom-2.5 left-2.5 px-3 py-1 rounded-md bg-[#1F1F1F]/90 text-[#FFFFFF] text-xs font-mono font-bold tracking-wider uppercase backdrop-blur-xs">
               {hoveredProject.title}
             </div>
           </motion.div>
@@ -361,7 +361,7 @@ export default function Projects() {
       </AnimatePresence>
 
       {/* Footer Action */}
-      <div className="w-full max-w-4xl mx-auto mt-16 sm:mt-20 pt-6 border-t border-[#9FB2C8] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#291B48]/70 font-bold uppercase tracking-wider relative z-10 text-center sm:text-left">
+      <div className="w-full max-w-4xl mx-auto mt-16 sm:mt-20 pt-6 border-t border-[#0054A6] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#1F1F1F]/70 font-bold uppercase tracking-wider relative z-10 text-center sm:text-left">
         <span>ARCHIVED REPOSITORIES & CREATIVE EXPERIMENTS</span>
         <PressButton
           href="https://github.com/davidnfy?tab=repositories"

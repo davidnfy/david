@@ -27,10 +27,10 @@ export default function AcademicCanvas3D({ className = "", style = {} }) {
     container.appendChild(renderer.domElement)
 
     // Palette Colors
-    const COLOR_PLUM = 0x291B48
-    const COLOR_BLUSH = 0xD5CCCD
-    const COLOR_AZURE = 0x5E87B6
-    const COLOR_CLOUD = 0x9FB2C8
+    const COLOR_PLUM = 0x1F1F1F
+    const COLOR_BLUSH = 0xFFFFFF
+    const COLOR_AZURE = 0x29ABE2
+    const COLOR_CLOUD = 0x0054A6
 
     // Lighting setup
     const ambientLight = new THREE.AmbientLight(COLOR_BLUSH, 1.5)
