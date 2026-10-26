@@ -70,6 +70,14 @@ export default function Projects() {
       description: "website to manage members, news, and activities for the batu city youth organization (Karang Taruna).",
       image: "/img/kartar.webp",
       githubUrl: "https://kartar.batu.city"
+    },
+       {
+      id: 7,
+      num: "07",
+      title: "Rindu Batu City",
+      description: "website to view citizen reports or complaints from city residents.",
+      image: "/img/batu-city.png",
+      githubUrl: "https://rindu.batu.city/d/"
     }
   ]
 
@@ -187,7 +195,7 @@ export default function Projects() {
         to={{ y: -50, rotate: -5 }}
         className="top-1/2 left-4 md:left-10 hidden sm:block"
       >
-        5 ARTIFACTS
+        7 ARTIFACTS
       </ParallaxSticker>
 
       {/* Section Header */}
