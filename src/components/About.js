@@ -1,11 +1,13 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, lazy, Suspense } from "react"
 import { motion } from "framer-motion"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import anime from "animejs"
 import { Compass, Sparkles, Heart } from "lucide-react"
-import ThreeCanvas3D from "./ThreeCanvas3D"
 import InfiniteSpiral from "./InfiniteSpiral"
+import SilentErrorBoundary from "./SilentErrorBoundary"
+
+const ThreeCanvas3D = lazy(() => import("./ThreeCanvas3D"))
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -224,7 +226,7 @@ export default function About() {
 
   return (
     <section
-      id="about"
+      id="about-section"
       ref={sectionRef}
       className="relative w-full h-screen bg-[#FFFFFF] text-[#1F1F1F] select-none overflow-hidden"
     >
@@ -238,7 +240,11 @@ export default function About() {
 
         {/* 3D Three.js Geometries - Clean GPU rendering without heavy raster blur */}
         <div ref={threeRef} className="absolute inset-0 w-full h-full pointer-events-none opacity-50" style={{ zIndex: -1 }}>
-          <ThreeCanvas3D className="w-full h-full" />
+          <SilentErrorBoundary>
+            <Suspense fallback={null}>
+              <ThreeCanvas3D className="w-full h-full" />
+            </Suspense>
+          </SilentErrorBoundary>
         </div>
 
         {/* STAGE 1: MONUMENTAL "DAVID NAFISY" CAMERA DOLLY-IN */}

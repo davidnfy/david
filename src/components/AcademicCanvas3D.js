@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react"
 import * as THREE from "three"
+import { createSafeThreeRenderer, getSafePixelRatio } from "../lib/webgl"
   
 export default function AcademicCanvas3D({ className = "", style = {} }) {
   const mountRef = useRef(null)
@@ -17,13 +18,11 @@ export default function AcademicCanvas3D({ className = "", style = {} }) {
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000)
     camera.position.set(0, 0, 9.5)
 
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-      powerPreference: "high-performance"
-    })
+    const renderer = createSafeThreeRenderer(THREE.WebGLRenderer)
+    if (!renderer) return
+
     renderer.setSize(width, height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25))
+    renderer.setPixelRatio(getSafePixelRatio(1.25))
     container.appendChild(renderer.domElement)
 
     // Palette Colors
@@ -393,7 +392,7 @@ export default function AcademicCanvas3D({ className = "", style = {} }) {
     const ro = new ResizeObserver(handleResize)
     ro.observe(container)
 
-    let isVisible = true
+    let isVisible = false
     const clock = new THREE.Clock()
 
     const animate = () => {
@@ -450,8 +449,6 @@ export default function AcademicCanvas3D({ className = "", style = {} }) {
       { threshold: 0.05 }
     )
     io.observe(container)
-
-    animate()
 
     return () => {
       io.disconnect()

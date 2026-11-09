@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, lazy, Suspense } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import {
@@ -7,7 +7,9 @@ import {
   Calendar,
   ChevronDown
 } from "lucide-react"
-import AcademicCanvas3D from "./AcademicCanvas3D"
+import SilentErrorBoundary from "./SilentErrorBoundary"
+
+const AcademicCanvas3D = lazy(() => import("./AcademicCanvas3D"))
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -162,7 +164,7 @@ export default function Education() {
 
   return (
     <section
-      id="education"
+      id="education-section"
       ref={sectionRef}
       className="relative w-full h-screen flex items-center justify-center bg-[#FFFFFF] text-[#1F1F1F] border-t border-[#0054A6] overflow-hidden select-none"
     >
@@ -175,7 +177,11 @@ export default function Education() {
         className="absolute inset-0 w-full h-full pointer-events-none z-10 transition-opacity duration-500"
         style={{ willChange: "transform, opacity, filter" }}
       >
-        <AcademicCanvas3D className="w-full h-full" />
+        <SilentErrorBoundary>
+          <Suspense fallback={null}>
+            <AcademicCanvas3D className="w-full h-full" />
+          </Suspense>
+        </SilentErrorBoundary>
       </div>
 
       <div

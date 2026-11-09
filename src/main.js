@@ -1,4 +1,4 @@
-import { Component, StrictMode } from "react"
+import { Component } from "react"
 import { createRoot } from "react-dom/client"
 import App from "./App"
 import "./style/index.css"
@@ -42,9 +42,7 @@ class ErrorBoundary extends Component {
 }
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-  </StrictMode>
+  <ErrorBoundary>
+    <App />
+  </ErrorBoundary>
 )

@@ -1,12 +1,11 @@
-import { useEffect, useRef } from "react"
-import { motion } from "framer-motion"
+import { lazy, Suspense, useEffect, useRef } from "react"
 import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Box, Sparkles } from "lucide-react"
-import GhostFibers from "./GhostFibers"
 import ProfileCard from "./ProfileCard"
+import SilentErrorBoundary from "./SilentErrorBoundary"
+import { IdleMount } from "./DeferredMount"
 
-gsap.registerPlugin(ScrollTrigger)
+const GhostFibers = lazy(() => import("./GhostFibers"))
 
 export default function Hero() {
   const sectionRef = useRef(null)
@@ -16,6 +15,8 @@ export default function Hero() {
   const titleLine4Ref = useRef(null)
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
     const lines = [
       titleLine1Ref.current,
       titleLine2Ref.current,
@@ -24,15 +25,12 @@ export default function Hero() {
     ]
     gsap.fromTo(
       lines,
-      { y: 80, opacity: 0, rotateX: -20 },
+      { y: 28 },
       {
         y: 0,
-        opacity: 1,
-        rotateX: 0,
-        duration: 1.1,
-        stagger: 0.15,
-        ease: "power4.out",
-        delay: 0.2
+        duration: 0.9,
+        stagger: 0.08,
+        ease: "power4.out"
       }
     )
   }, [])
@@ -43,96 +41,93 @@ export default function Hero() {
       ref={sectionRef}
       className="relative w-full min-h-screen flex flex-col justify-between px-5 sm:px-12 md:px-16 lg:px-20 xl:px-28 pt-24 sm:pt-28 pb-10 sm:pb-12 overflow-hidden bg-[#FFFFFF] text-[#1F1F1F] select-none"
     >
-      {/* Dynamic Animated Background: GhostFibers */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-        <GhostFibers
-          lineColor="#1F1F1F"
-          glowColor="#29ABE2"
-          backdropColor="#FFFFFF"
-          lightMode={true}
-          speed={0.18}
-          scale={1.4}
-          rotation={0}
-          rotationSpeed={0.2}
-          layers={3}
-          waveAmplitude={0.015}
-          waveFrequency={3}
-          waveSpeed={0.15}
-          layerSpeed={0.08}
-          twist={0.1}
-          twistFrequency={5}
-          twistSpeed={1.2}
-          lineFrequency={5}
-          lineSpacing={2}
-          lineSharpness={16}
-          glowFalloff={10}
-          glowIntensity={1.5}
-          brightness={2}
-          blueBoost={1.25}
-          vignette={0.4}
-          grain={0.015}
-          dpr={1}
-          className="w-full h-full"
-        />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden bg-[#FFFFFF]" style={{ zIndex: 0 }}>
+        <IdleMount timeout={1600}>
+          <SilentErrorBoundary>
+            <Suspense fallback={null}>
+              <GhostFibers
+                lineColor="#1F1F1F"
+                glowColor="#29ABE2"
+                backdropColor="#FFFFFF"
+                lightMode={true}
+                speed={0.18}
+                scale={1.4}
+                rotation={0}
+                rotationSpeed={0.2}
+                layers={3}
+                waveAmplitude={0.015}
+                waveFrequency={3}
+                waveSpeed={0.15}
+                layerSpeed={0.08}
+                twist={0.1}
+                twistFrequency={5}
+                twistSpeed={1.2}
+                lineFrequency={5}
+                lineSpacing={2}
+                lineSharpness={16}
+                glowFalloff={10}
+                glowIntensity={1.5}
+                brightness={2}
+                blueBoost={1.25}
+                vignette={0.4}
+                grain={0.015}
+                dpr={1}
+                fps={45}
+                className="w-full h-full"
+              />
+            </Suspense>
+          </SilentErrorBoundary>
+        </IdleMount>
       </div>
 
-      {/* Tech Dot-Grid Overlay for Tactile Texture */}
       <div className="absolute inset-0 tech-dot-grid opacity-30 pointer-events-none" style={{ zIndex: 1 }} />
 
-
-      {/* Main Hero Content */}
       <div className="hero-animate w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto py-6 sm:py-8 z-10">
-        
-        {}
         <div className="lg:col-span-8 space-y-6">
           <div className="perspective-1000 space-y-1">
-            {}
-            <div className="overflow-hidden flex items-center gap-4">
-              <h1
-                ref={titleLine1Ref}
-                className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#1F1F1F] uppercase"
-              >
-                Crafting
-              </h1>
-              <motion.div
-                initial={{ rotate: 0 }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
-                className="hidden xl:flex w-10 h-10 rounded-2xl bg-[#FFFFFF] border border-[#0054A6] items-center justify-center text-[#1F1F1F] shadow-xs"
-              >
-                <Box size={20} />
-              </motion.div>
-            </div>
+            <h1 className="m-0 font-normal">
+              <span className="overflow-hidden flex items-center gap-4">
+                <span
+                  ref={titleLine1Ref}
+                  className="block text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#1F1F1F] uppercase"
+                >
+                  Crafting
+                </span>
+                <span
+                  className="hidden xl:flex w-10 h-10 rounded-2xl bg-[#FFFFFF] border border-[#0054A6] items-center justify-center text-[#1F1F1F] shadow-xs hero-spin"
+                  aria-hidden="true"
+                >
+                  <Box size={20} />
+                </span>
+              </span>
 
-            {/* Line 2: empathetic (Instrument Serif Italic) */}
-            <div className="overflow-hidden py-1">
-              <h1
-                ref={titleLine2Ref}
-                className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-latin italic font-normal tracking-tight leading-none text-[#29ABE2] select-none"
-              >
-                empathetic
-              </h1>
-            </div>
+              <span className="overflow-hidden py-1 block">
+                <span
+                  ref={titleLine2Ref}
+                  className="block text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-latin italic font-normal tracking-tight leading-none text-[#29ABE2] select-none"
+                >
+                  empathetic
+                </span>
+              </span>
 
-            {/* Line 3: digital (Instrument Serif Italic) */}
-            <div className="overflow-hidden py-1">
-              <h1
-                ref={titleLine3Ref}
-                className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-latin italic font-normal tracking-tight leading-none text-[#29ABE2] select-none"
-              >
-                digital
-              </h1>
-            </div>
+              <span className="overflow-hidden py-1 block">
+                <span
+                  ref={titleLine3Ref}
+                  className="block text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-latin italic font-normal tracking-tight leading-none text-[#29ABE2] select-none"
+                >
+                  digital
+                </span>
+              </span>
 
-            {/* Line 4: experiences. */}
-            <div className="overflow-hidden">
-              <h1
-                ref={titleLine4Ref}
-                className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#1F1F1F] uppercase"
-              >
-                experiences<span className="text-[#0054A6]">.</span>
-              </h1>
-            </div>
+              <span className="overflow-hidden block">
+                <span
+                  ref={titleLine4Ref}
+                  className="block text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#1F1F1F] uppercase"
+                >
+                  experiences<span className="text-[#0054A6]">.</span>
+                </span>
+              </span>
+            </h1>
           </div>
 
           <div className="flex items-center gap-3 pt-1">
@@ -155,7 +150,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {}
         <div className="lg:col-span-4 flex justify-center lg:justify-end">
           <ProfileCard
             name="David Nafisy"
@@ -177,10 +171,8 @@ export default function Hero() {
             innerGradient="linear-gradient(145deg, rgba(41, 27, 72, 0.95) 0%, rgba(94, 135, 182, 0.38) 100%)"
           />
         </div>
-
       </div>
 
-      {}
       <div className="hero-animate w-full border-t border-[#0054A6] pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-[#1F1F1F]/70 font-bold tracking-wider z-10 gap-2">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 bg-[#29ABE2] rounded-full" />

@@ -103,7 +103,7 @@ export default function Contact() {
 
   return (
     <footer
-      id="contact"
+      id="contact-section"
       className="relative w-full py-20 sm:py-28 px-5 sm:px-12 md:px-16 lg:px-20 xl:px-28 bg-[#FFFFFF] text-[#1F1F1F] border-t border-[#0054A6] overflow-hidden"
     >
       <div className="absolute inset-0 tech-dot-grid opacity-30 pointer-events-none" />

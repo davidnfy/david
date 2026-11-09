@@ -69,8 +69,12 @@ function TechItemMinimal({ tech }) {
       <div className="w-6 h-6 flex items-center justify-center shrink-0">
         <img
           src={iconUrl}
-          alt={tech.name}
+          alt=""
+          width={24}
+          height={24}
           className="w-full h-full object-contain"
+          loading="lazy"
+          decoding="async"
           referrerPolicy="no-referrer"
           draggable={false}
         />
@@ -173,7 +177,7 @@ export default function TechStack() {
   const row2Repeated = [...row2, ...row2, ...row2, ...row2]
 
   return (
-    <section id="stack" className="relative w-full py-28 bg-[#FFFFFF] border-t border-[#0054A6] overflow-hidden">
+    <section id="stack-section" className="relative w-full py-28 bg-[#FFFFFF] border-t border-[#0054A6] overflow-hidden">
       <div className="absolute inset-0 tech-dot-grid opacity-30 pointer-events-none" />
 
       {/* Floating Badges */}

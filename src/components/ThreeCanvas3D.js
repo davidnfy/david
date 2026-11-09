@@ -1,5 +1,22 @@
 import { useEffect, useRef } from "react"
-import * as THREE from "three"
+import {
+  Scene,
+  PerspectiveCamera,
+  WebGLRenderer,
+  Group,
+  IcosahedronGeometry,
+  OctahedronGeometry,
+  TorusGeometry,
+  BoxGeometry,
+  BufferGeometry,
+  BufferAttribute,
+  MeshBasicMaterial,
+  Mesh,
+  PointsMaterial,
+  Points,
+  Clock
+} from "three"
+import { createSafeThreeRenderer, getSafePixelRatio } from "../lib/webgl"
 
 export default function ThreeCanvas3D({ className = "" }) {
   const mountRef = useRef(null)
@@ -9,12 +26,12 @@ export default function ThreeCanvas3D({ className = "" }) {
     if (!container) return
 
     let animationFrameId
-    const scene = new THREE.Scene()
+    const scene = new Scene()
 
     const width = container.clientWidth || window.innerWidth || 1
     const height = container.clientHeight || window.innerHeight || 1
 
-    const camera = new THREE.PerspectiveCamera(
+    const camera = new PerspectiveCamera(
       45,
       width / height,
       0.1,
@@ -22,16 +39,14 @@ export default function ThreeCanvas3D({ className = "" }) {
     )
     camera.position.z = 10
 
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-      powerPreference: "high-performance"
-    })
+    const renderer = createSafeThreeRenderer(WebGLRenderer)
+    if (!renderer) return
+
     renderer.setSize(width, height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25))
+    renderer.setPixelRatio(getSafePixelRatio(1.25))
     container.appendChild(renderer.domElement)
 
-    const group = new THREE.Group()
+    const group = new Group()
     scene.add(group)
 
     const COLOR_PLUM = 0x1F1F1F
@@ -39,31 +54,31 @@ export default function ThreeCanvas3D({ className = "" }) {
     const COLOR_CLOUD = 0x0054A6
 
     // 1. Central Icosahedron - Deep Plum
-    const icoGeometry = new THREE.IcosahedronGeometry(1.8, 1)
-    const icoMaterial = new THREE.MeshBasicMaterial({
+    const icoGeometry = new IcosahedronGeometry(1.8, 1)
+    const icoMaterial = new MeshBasicMaterial({
       color: COLOR_PLUM,
       wireframe: true,
       transparent: true,
       opacity: 0.35
     })
-    const icosahedron = new THREE.Mesh(icoGeometry, icoMaterial)
+    const icosahedron = new Mesh(icoGeometry, icoMaterial)
     group.add(icosahedron)
 
     // 2. Inner Octahedron Core - Muted Azure
-    const octGeometry = new THREE.OctahedronGeometry(1.0, 0)
-    const octMaterial = new THREE.MeshBasicMaterial({
+    const octGeometry = new OctahedronGeometry(1.0, 0)
+    const octMaterial = new MeshBasicMaterial({
       color: COLOR_AZURE,
       wireframe: true,
       transparent: true,
       opacity: 0.6
     })
-    const octahedron = new THREE.Mesh(octGeometry, octMaterial)
+    const octahedron = new Mesh(octGeometry, octMaterial)
     group.add(octahedron)
 
     // 3. Gyroscopic Rings
-    const gyroRing1 = new THREE.Mesh(
-      new THREE.TorusGeometry(2.6, 0.025, 16, 100),
-      new THREE.MeshBasicMaterial({
+    const gyroRing1 = new Mesh(
+      new TorusGeometry(2.6, 0.025, 12, 64),
+      new MeshBasicMaterial({
         color: COLOR_PLUM,
         transparent: true,
         opacity: 0.4
@@ -72,9 +87,9 @@ export default function ThreeCanvas3D({ className = "" }) {
     gyroRing1.rotation.x = Math.PI / 4
     group.add(gyroRing1)
 
-    const gyroRing2 = new THREE.Mesh(
-      new THREE.TorusGeometry(3.2, 0.02, 16, 100),
-      new THREE.MeshBasicMaterial({
+    const gyroRing2 = new Mesh(
+      new TorusGeometry(3.2, 0.02, 12, 64),
+      new MeshBasicMaterial({
         color: COLOR_AZURE,
         transparent: true,
         opacity: 0.4
@@ -83,9 +98,9 @@ export default function ThreeCanvas3D({ className = "" }) {
     gyroRing2.rotation.y = Math.PI / 3
     group.add(gyroRing2)
 
-    const gyroRing3 = new THREE.Mesh(
-      new THREE.TorusGeometry(3.8, 0.02, 16, 100),
-      new THREE.MeshBasicMaterial({
+    const gyroRing3 = new Mesh(
+      new TorusGeometry(3.8, 0.02, 12, 64),
+      new MeshBasicMaterial({
         color: COLOR_CLOUD,
         transparent: true,
         opacity: 0.35
@@ -95,7 +110,7 @@ export default function ThreeCanvas3D({ className = "" }) {
     group.add(gyroRing3)
 
     // 4. Orbiting Cubes
-    const cubeGroup = new THREE.Group()
+    const cubeGroup = new Group()
     group.add(cubeGroup)
     const cubes = []
     const cubeCount = 9
@@ -103,14 +118,14 @@ export default function ThreeCanvas3D({ className = "" }) {
 
     for (let i = 0; i < cubeCount; i++) {
       const size = 0.28 + Math.random() * 0.15
-      const cubeGeo = new THREE.BoxGeometry(size, size, size)
-      const cubeMat = new THREE.MeshBasicMaterial({
+      const cubeGeo = new BoxGeometry(size, size, size)
+      const cubeMat = new MeshBasicMaterial({
         color: cubeColors[i % 3],
         wireframe: true,
         transparent: true,
         opacity: 0.5
       })
-      const cubeMesh = new THREE.Mesh(cubeGeo, cubeMat)
+      const cubeMesh = new Mesh(cubeGeo, cubeMat)
 
       const angle = (i / cubeCount) * Math.PI * 2
       const radius = 3.6 + (i % 3) * 0.5
@@ -139,15 +154,15 @@ export default function ThreeCanvas3D({ className = "" }) {
       positions[i + 2] = (Math.random() - 0.5) * 14
     }
 
-    const pointsGeometry = new THREE.BufferGeometry()
-    pointsGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3))
-    const pointsMaterial = new THREE.PointsMaterial({
+    const pointsGeometry = new BufferGeometry()
+    pointsGeometry.setAttribute("position", new BufferAttribute(positions, 3))
+    const pointsMaterial = new PointsMaterial({
       color: COLOR_CLOUD,
       size: 0.07,
       transparent: true,
       opacity: 0.55
     })
-    const starfield = new THREE.Points(pointsGeometry, pointsMaterial)
+    const starfield = new Points(pointsGeometry, pointsMaterial)
     group.add(starfield)
 
     // Interactive mouse positioning
@@ -179,8 +194,8 @@ export default function ThreeCanvas3D({ className = "" }) {
     const ro = new ResizeObserver(handleResize)
     ro.observe(container)
 
-    let isVisible = true
-    let clock = new THREE.Clock()
+    let isVisible = false
+    let clock = new Clock()
     const animate = () => {
       if (!isVisible) {
         animationFrameId = null
@@ -229,8 +244,6 @@ export default function ThreeCanvas3D({ className = "" }) {
       }
     }, { threshold: 0.05 })
     io.observe(container)
-
-    animate()
 
     return () => {
       io.disconnect()

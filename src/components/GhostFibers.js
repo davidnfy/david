@@ -185,34 +185,33 @@ const GhostFibers = ({
     if (!container) return;
 
     let renderer;
+    let gl;
+    let canvas;
+    let program;
+    let mesh;
     try {
       renderer = new Renderer({
         webgl: 2,
         alpha: false,
         antialias: false,
-        dpr: Math.min(Math.max(dpr, 0.5), 2)
+        dpr: Math.min(Math.max(dpr, 0.5), 1)
       });
-    } catch (e) {
-      console.warn("GhostFibers: WebGL2 not supported", e);
-      return;
-    }
+      gl = renderer.gl;
+      if (!gl) return;
 
-    const gl = renderer.gl;
-    if (!gl) return;
+      canvas = gl.canvas;
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.display = 'block';
+      canvas.setAttribute('aria-hidden', 'true');
+      container.appendChild(canvas);
 
-    const canvas = gl.canvas;
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.display = 'block';
-    canvas.setAttribute('aria-hidden', 'true');
-    container.appendChild(canvas);
+      const geometry = new Geometry(gl, {
+        position: { size: 2, data: new Float32Array([-1, -1, 3, -1, -1, 3]) }
+      });
+      const initialBackdrop = backdropColor ? hexToRgb(backdropColor) : [0.07, 0.06, 0.09];
 
-    const geometry = new Geometry(gl, {
-      position: { size: 2, data: new Float32Array([-1, -1, 3, -1, -1, 3]) }
-    });
-    const initialBackdrop = backdropColor ? hexToRgb(backdropColor) : [0.07, 0.06, 0.09];
-
-    const program = new Program(gl, {
+      program = new Program(gl, {
       vertex,
       fragment,
       uniforms: {
@@ -246,7 +245,13 @@ const GhostFibers = ({
         uUseCustomBackdrop: { value: backdropColor ? 1.0 : 0.0 }
       }
     });
-    const mesh = new Mesh(gl, { geometry, program });
+      mesh = new Mesh(gl, { geometry, program });
+    } catch (e) {
+      console.warn("GhostFibers: WebGL unavailable", e);
+      if (canvas?.parentNode === container) container.removeChild(canvas);
+      gl?.getExtension('WEBGL_lose_context')?.loseContext();
+      return;
+    }
 
     let frameId = 0;
     let elapsed = 0;

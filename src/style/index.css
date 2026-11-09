@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&family=Syne:wght@700;800;900&display=swap');
 @import "tailwindcss";
 @import "./fx.css";
 
@@ -141,4 +140,12 @@
 
 .animate-float {
   animation: float 4s ease-in-out infinite;
+}
+
+@keyframes hero-spin {
+  to { transform: rotate(360deg); }
+}
+
+.hero-spin {
+  animation: hero-spin 16s linear infinite;
 }

@@ -172,11 +172,11 @@ export default function Projects() {
 
   return (
     <section
-      id="projects"
+      id="projects-section"
       ref={sectionRef}
       className="relative w-full py-20 sm:py-32 px-5 sm:px-12 md:px-16 lg:px-20 xl:px-28 bg-[#FFFFFF] text-[#1F1F1F] overflow-hidden border-t border-[#0054A6]"
     >
-      {/* Background solid tech dot grid */}
+      {}
       <div className="absolute inset-0 tech-dot-grid opacity-40 pointer-events-none" />
 
       {/* RoiHeads-style Parallax Floating Stickers */}
